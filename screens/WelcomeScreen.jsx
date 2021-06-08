@@ -3,6 +3,7 @@ import { Text, View, StatusBar } from 'react-native';
 import styles from '../style-sheet';
 
 function WelcomeScreen() {
+  console.log('hi!')
   return (
     <View style={styles.container}>
       <View style={styles.welcomeContainer}>
