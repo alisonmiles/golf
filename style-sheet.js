@@ -1,19 +1,29 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
+  background: {
     flex: 1,
-    backgroundColor: '#fff',
+    alignItems: 'center',
+  },
+  welcomeHeader: {
+    position: 'absolute',
+    top: 20,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  welcomeContainer: {
-    position: 'absolute',
-    top: 20,
-  },
-  welcomeStyle: {
+  welcomeText: {
     color: 'green',
     fontSize: 30,
+  },
+  welcomeInput: {
+    top: 400,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FFF',
+    borderRadius: 10,
+    width: '20%',
+    height: '10%',
+    marginBottom: 10,
   },
 });
 
