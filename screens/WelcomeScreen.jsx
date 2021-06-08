@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, StatusBar } from 'react-native';
 import styles from '../style-sheet';
 
-function WelcomeScreen(props) {
+function WelcomeScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.welcomeContainer}>

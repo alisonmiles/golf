@@ -8,8 +8,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   welcomeContainer: {
-    position:'absolute',
-    top: 20
+    position: 'absolute',
+    top: 20,
   },
   welcomeStyle: {
     color: 'green',
