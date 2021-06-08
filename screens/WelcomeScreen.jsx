@@ -6,7 +6,7 @@ function WelcomeScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.welcomeContainer}>
-        <Text style={styles.welcomeStyle}>Welcome to the Golf App!!</Text>
+        <Text style={styles.welcomeStyle}>Hello and welcome to the Golf App!!</Text>
       </View>
       <StatusBar style='auto' />
     </View>
