@@ -7,7 +7,7 @@ import {
   TextInput,
 } from 'react-native';
 import styles from '../style-sheet';
-import { firebase } from '../src/firebase/config.js';
+import { firebase, db } from '../src/firebase/config.js';
 
 function WelcomeScreen() {
   const [email, setEmail] = useState('');

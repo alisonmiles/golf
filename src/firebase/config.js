@@ -1,8 +1,12 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
+
 // <!-- The core Firebase JS SDK is always required and must be listed first -->
 
 /* <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>; */
+
+/* <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>; */
 
 // <!-- TODO: Add SDKs for Firebase products that you want to use
 //      https://firebase.google.com/docs/web/setup#available-libraries -->
@@ -26,6 +30,9 @@ const firebaseConfig = {
 };
 //   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+const db = firebase.firestore();
+
 // firebase.analytics();
 // </script>
-export default { firebase };
+export { firebase, db };
