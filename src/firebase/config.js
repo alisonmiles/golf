@@ -1,22 +1,21 @@
+import firebase from 'firebase/app';
+import 'firebase/auth';
 // <!-- The core Firebase JS SDK is always required and must be listed first -->
-{
-  /* <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>; */
-}
+
+/* <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>; */
 
 // <!-- TODO: Add SDKs for Firebase products that you want to use
 //      https://firebase.google.com/docs/web/setup#available-libraries -->
-{
-  /* <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-analytics.js"></script> */
-}
+
+/* <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-analytics.js"></script> */
 
 // <script>
 //   // Your web app's Firebase configuration
 //   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-import firebase from 'firebase/app';
-import 'firebase/auth';
+
 // import 'firebase/analytics';
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: 'AIzaSyBuShrmPGgUNkNavmTqbNh8FvxBW460iIg',
   authDomain: 'golf-262b7.firebaseapp.com',
   projectId: 'golf-262b7',
@@ -29,4 +28,4 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 // firebase.analytics();
 // </script>
-export { firebase };
+export default { firebase };
