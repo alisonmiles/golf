@@ -13,6 +13,16 @@ function WelcomeScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const docRef = db.collection('users').doc('anna c');
+
+  docRef.get().then((doc) => {
+    if (doc.exists) {
+      console.log(doc.data());
+    } else {
+      console.log('no such document');
+    }
+  });
+
   firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
