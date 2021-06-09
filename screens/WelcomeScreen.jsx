@@ -7,10 +7,36 @@ import {
   TextInput,
 } from 'react-native';
 import styles from '../style-sheet';
+import { firebase } from '../src/firebase/config.js';
 
 function WelcomeScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+    })
+    .catch((err) => {
+      const errorCode = err.code;
+      const errorMessage = err.message;
+      console.log(errorCode, errorMessage);
+    });
+
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+    })
+    .catch((err) => {
+      const errorCode = err.code;
+      const errorMessage = err.message;
+    });
+
+  const user = firebase.auth().currentUser;
 
   return (
     <ImageBackground
@@ -22,18 +48,19 @@ function WelcomeScreen() {
       </View>
       <View style={styles.welcomeInput}>
         <TextInput
-          placeholder='Email Address'
+          placeholder="Email Address"
           onChangeText={(email) => setEmail(email)}
         ></TextInput>
       </View>
       <View style={styles.welcomeInput}>
         <TextInput
-          placeholder='Password'
+          placeholder="Password"
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
         ></TextInput>
       </View>
-      <StatusBar style='auto' />
+      <View>{user ? <Text>Hello</Text> : <Text>NO USER</Text>}</View>
+      <StatusBar style="auto" />
     </ImageBackground>
   );
 }
