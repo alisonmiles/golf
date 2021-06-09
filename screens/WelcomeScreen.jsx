@@ -7,7 +7,7 @@ import {
   TextInput,
 } from 'react-native';
 import styles from '../style-sheet';
-import { firebase } from '../src/firebase/config.js';
+import firebase from '../src/firebase/config.js';
 
 function WelcomeScreen() {
   const [email, setEmail] = useState('');
@@ -48,19 +48,19 @@ function WelcomeScreen() {
       </View>
       <View style={styles.welcomeInput}>
         <TextInput
-          placeholder="Email Address"
+          placeholder='Email Address'
           onChangeText={(email) => setEmail(email)}
         ></TextInput>
       </View>
       <View style={styles.welcomeInput}>
         <TextInput
-          placeholder="Password"
+          placeholder='Password'
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
         ></TextInput>
       </View>
       <View>{user ? <Text>Hello</Text> : <Text>NO USER</Text>}</View>
-      <StatusBar style="auto" />
+      <StatusBar style='auto' />
     </ImageBackground>
   );
 }

@@ -28,4 +28,4 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 // firebase.analytics();
 // </script>
-export default { firebase };
+export default firebase;
