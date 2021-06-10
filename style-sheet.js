@@ -25,6 +25,24 @@ const styles = StyleSheet.create({
     height: '10%',
     marginBottom: 10,
   },
+  logInButton: {
+    width: 100,
+    height: 50,
+    backgroundColor: '#FFF',
+    borderRadius: 10,
+    top: 400,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  signUpButton: {
+    width: 100,
+    height: 50,
+    backgroundColor: '#FFF',
+    borderRadius: 10,
+    top: 410,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
 export default styles;
