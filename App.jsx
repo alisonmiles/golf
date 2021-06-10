@@ -5,5 +5,5 @@ import PostingScreen from './screens/PostingScreen';
 import FeedComponent from './screens/FeedComponent';
 
 export default function App() {
-  return <FeedComponent />;
+  return <HomeScreen />;
 }

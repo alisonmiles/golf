@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from '../style-sheet';
-import { firebase, db } from '../src/firebase/config.js';
+import styles from '../../style-sheet';
+import { firebase, db } from '../firebase/config.js';
 import { Button } from 'react-native';
 
 function PostingScreen() {
@@ -27,7 +27,7 @@ function PostingScreen() {
       onPress={() => {
         pressButton();
       }}
-      title='POST'
+      title="POST"
     ></Button>
   );
 }

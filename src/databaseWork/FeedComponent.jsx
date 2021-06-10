@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import styles from '../style-sheet';
-import { firebase, db } from '../src/firebase/config.js';
+import styles from '../../style-sheet';
+import { firebase, db } from '../firebase/config.js';
 import { View, FlatList } from 'react-native';
 
 function FeedComponent() {
