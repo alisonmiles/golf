@@ -6,13 +6,13 @@ import { Button } from 'react-native';
 function PostingScreen() {
   function pressButton() {
     db.collection('users')
-      .doc('anna c')
+      .doc('mr heworth')
       .collection('posts')
       .add({
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        coursename: 'showing off test',
-        scores: 89,
-        username: 'anna c',
+        coursename: 'Im a cat',
+        scores: 70,
+        username: 'mr heworth',
       })
       .then((documentReference) => {
         console.log(documentReference);
@@ -27,7 +27,7 @@ function PostingScreen() {
       onPress={() => {
         pressButton();
       }}
-      title="POST"
+      title='POST'
     ></Button>
   );
 }
