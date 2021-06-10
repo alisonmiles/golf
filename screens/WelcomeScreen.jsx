@@ -13,7 +13,11 @@ function WelcomeScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const docRef = db.collection('users').doc('anna c');
+  const docRef = db
+    .collection('users')
+    .doc('anna c')
+    .collection('posts')
+    .doc('first post');
 
   docRef.get().then((doc) => {
     if (doc.exists) {

@@ -25,6 +25,18 @@ const styles = StyleSheet.create({
     height: '10%',
     marginBottom: 10,
   },
+  // homeHeader: {
+  //   flex: 1,
+  //   position: 'absolute',
+  //   top: 20,
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  // },
+  homeText: {
+    textAlign: 'center',
+    color: 'green',
+    fontSize: 30,
+  },
 });
 
 export default styles;
