@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import FormButton from '../components/FormButton';
 import { AuthContext } from '../navigation/AuthProvider';
+import PostRound from '../components/PostRound';
 
-export default function HomeScreen() {
+export default function PostScreen() {
   const { user, logout } = useContext(AuthContext);
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Welcome {user.uid}</Text>
+      <PostRound />
     </View>
   );
 }
