@@ -2,7 +2,6 @@ export default [
   {
     id: '1',
     title: 'Choose Your Course',
-    image: require(),
   },
   {
     id: '2',
