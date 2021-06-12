@@ -5,6 +5,8 @@ import PostRoundItem from './PostRoundItem';
 
 export default function PostRound() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [score, setScore] = useState(0);
+  console.log('score is', score);
 
   const scrollX = useRef(new Animated.Value(0)).current;
 
@@ -19,7 +21,9 @@ export default function PostRound() {
       <Text>Post a round</Text>
       <FlatList
         data={postSlides}
-        renderItem={({ item }) => <PostRoundItem item={item} />}
+        renderItem={({ item }) => (
+          <PostRoundItem item={item} setScore={setScore} />
+        )}
         horizontal
         showsHorizontalScrollIndicator
         pagingEnabled
