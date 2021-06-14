@@ -39,4 +39,40 @@ export default [
     id: '10',
     title: 'Hole 9',
   },
+  {
+    id: '11',
+    title: 'Hole 10',
+  },
+  {
+    id: '12',
+    title: 'Hole 11',
+  },
+  {
+    id: '13',
+    title: 'Hole 12',
+  },
+  {
+    id: '14',
+    title: 'Hole 13',
+  },
+  {
+    id: '15',
+    title: 'Hole 14',
+  },
+  {
+    id: '16',
+    title: 'Hole 15',
+  },
+  {
+    id: '17',
+    title: 'Hole 16',
+  },
+  {
+    id: '18',
+    title: 'Hole 17',
+  },
+  {
+    id: '19',
+    title: 'Hole 18',
+  },
 ];
