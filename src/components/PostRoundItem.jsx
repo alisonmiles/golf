@@ -7,9 +7,10 @@ import {
   TextInput,
 } from 'react-native';
 
-export default function PostRoundItem({ item, setScore }) {
+export default function PostRoundItem({ item, setScore, score }) {
   const { width } = useWindowDimensions();
-  const [number, onChangeNumber] = useState(null);
+  const [number, onChangeNumber] = useState(0);
+  console.log(score);
 
   return (
     <View style={[styles.container, { width }]}>
@@ -21,18 +22,20 @@ export default function PostRoundItem({ item, setScore }) {
           value={number}
           onSubmitEditing={() => {
             setScore((currScore) => {
-              currScore + number;
+              // console.log(typeof number);
+              return currScore + Number(number);
+              //item.id
               console.log('currScore is', currScore);
               console.log('number is', number);
             });
           }}
-          // console.log(score);
           // console.log(number);
 
           placeholder="Enter your score"
           keyboardType="numeric"
           textAlign="center"
         ></TextInput>
+        <Text>Total {score}</Text>
       </View>
     </View>
   );
