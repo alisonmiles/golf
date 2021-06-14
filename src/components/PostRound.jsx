@@ -19,7 +19,7 @@ export default function PostRound() {
 
   return (
     <View style={styles.container}>
-      <Text>Post a round</Text>
+      <Text style={styles.header}>Post a round</Text>
       <FlatList
         data={postSlides}
         renderItem={({ item }) => (
@@ -48,5 +48,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  header: {
+    top: 70,
+    fontSize: 30,
   },
 });
