@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import Feed from '../components/Feed';
 import { AuthContext } from '../navigation/AuthProvider';
 
 export default function HomeScreen() {
