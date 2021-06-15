@@ -2,6 +2,8 @@ import React from 'react';
 import styles from '../../style-sheet';
 import firebaseSetup from '../firebase/config.js';
 import { Button } from 'react-native';
+const { firebase, db } = firebaseSetup;
+
 
 function PostingScreen() {
   const [scores, setScores] = useState();

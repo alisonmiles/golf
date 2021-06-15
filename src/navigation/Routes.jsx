@@ -5,6 +5,7 @@ import AuthStack from './AuthStack';
 import HomeStack from './HomeStack';
 import { AuthContext } from './AuthProvider';
 import Loading from '../components/Loading';
+const { firebase } = firebaseSetup;
 
 const { firebase } = firebaseSetup;
 

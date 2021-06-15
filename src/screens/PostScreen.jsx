@@ -4,7 +4,7 @@ import FormButton from '../components/FormButton';
 import { AuthContext } from '../navigation/AuthProvider';
 import PostRound from '../components/PostRound';
 
-export default function PostScreen() {
+export default function PostScreen({ navigation }) {
   const { user, logout } = useContext(AuthContext);
   return (
     <View style={styles.container}>

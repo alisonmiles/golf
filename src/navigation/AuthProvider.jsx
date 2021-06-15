@@ -1,9 +1,10 @@
 import React, { createContext, useState } from 'react';
 import firebaseSetup from '../firebase/config.js';
 
+const { firebase, db } = firebaseSetup;
+
 export const AuthContext = createContext({});
 
-const { firebase } = firebaseSetup;
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);

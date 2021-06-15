@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styles from '../../style-sheet';
 import firebaseSetup from '../firebase/config.js';
 import { View, FlatList } from 'react-native';
+const { firebase, db } = firebaseSetup;
+
 function FeedComponent() {
   const [posts, setPosts] = useState([]);
   const [usernames, setUsernames] = useState([]);

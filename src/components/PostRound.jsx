@@ -3,10 +3,15 @@ import { Text, View, StyleSheet, FlatList, Animated } from 'react-native';
 import postSlides from '../postSlides';
 import PostRoundItem from './PostRoundItem';
 
-export default function PostRound() {
+export default function PostRound({ navigation }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [score, setScore] = useState(0);
+  const [parScore, setParScore] = useState(0);
+  // console.log('score is', score);
+  console.log('parScore is', parScore);
 
   const scrollX = useRef(new Animated.Value(0)).current;
+  const slidesRef = useRef(null);
 
   const viewableItemsChanged = useRef(({ viewableItems }) => {
     
@@ -17,10 +22,18 @@ export default function PostRound() {
 
   return (
     <View style={styles.container}>
-      <Text>Post a round</Text>
+      <Text style={styles.header}>Post a round</Text>
       <FlatList
         data={postSlides}
-        renderItem={({ item }) => <PostRoundItem item={item} />}
+        renderItem={({ item }) => (
+          <PostRoundItem
+            item={item}
+            setScore={setScore}
+            score={score}
+            parScore={parScore}
+            setParScore={setParScore}
+          />
+        )}
         horizontal
         showsHorizontalScrollIndicator
         pagingEnabled
@@ -44,5 +57,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  header: {
+    top: 70,
+    fontSize: 30,
   },
 });

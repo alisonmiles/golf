@@ -9,8 +9,7 @@ import {
 } from 'react-native';
 import styles from '../../style-sheet';
 import firebaseSetup from '../firebase/config.js';
-
-const {firebase} = firebaseSetup;
+const { firebase, db } = firebaseSetup;
 
 function WelcomeScreen() {
   const [email, setEmail] = useState('');
