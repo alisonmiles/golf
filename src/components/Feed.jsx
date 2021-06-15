@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text, Button, FlatList } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import { useState, useEffect } from 'react/cjs/react.development';
 import firebaseSetup from '../firebase/config.js';
 
-const { db, firebase } = firebaseSetup;
+const { db } = firebaseSetup;
 
 function Feed() {
   const [posts, setPosts] = useState([]);
@@ -21,8 +21,6 @@ function Feed() {
     setHasPosts(true);
   }, [hasPosts]);
 
-  console.log(posts, '<<< posts', hasPosts, '<<< boolean');
-
   if (hasPosts === false) return <Text>Posts Loading...</Text>;
   else {
     return (
@@ -33,11 +31,10 @@ function Feed() {
           <View>
             <Text>Course Name:{item.coursename}</Text>
             <Text>Score:{item.scores}</Text>
+            <Text>Date: {new Date(item.key.seconds).toString()}</Text>
           </View>
         )}
-        listKey={(item) => {
-          item.key;
-        }}
+        keyExtractor={(item) => item.key.toString()}
         extraData={posts}
       />
     );
