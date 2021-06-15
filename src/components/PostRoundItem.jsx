@@ -7,6 +7,7 @@ import {
   useWindowDimensions,
   TextInput,
   Button,
+  Alert,
 } from 'react-native';
 import firebaseSetup from '../firebase/config';
 
@@ -35,7 +36,8 @@ export default function PostRoundItem({
         uid: user.uid, // gotten from user context
       })
       .then((documentReference) => {
-        console.log(documentReference);
+        Alert.alert('Score submitted');
+        // console.log(documentReference);
       })
       .catch((err) => {
         console.log(err);
