@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from '../../style-sheet';
-import { firebase, db } from '../firebase/config.js';
+import firebaseSetup from '../firebase/config.js';
 import { Button } from 'react-native';
+const { firebase, db } = firebaseSetup;
+
 function PostingScreen() {
   function pressButton() {
     db.collection('users')

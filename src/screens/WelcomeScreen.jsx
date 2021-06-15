@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import styles from '../../style-sheet';
-import firebase from '../firebase/config.js';
+import firebaseSetup from '../firebase/config.js';
+const { firebase, db } = firebaseSetup;
 
 function WelcomeScreen() {
   const [email, setEmail] = useState('');
