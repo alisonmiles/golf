@@ -6,10 +6,12 @@ import PostRoundItem from './PostRoundItem';
 export default function PostRound() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const [frontNine, setFrontNine] = useState(0);
-  console.log('score is', score);
+  const [parScore, setParScore] = useState(0);
+  // console.log('score is', score);
+  console.log('parScore is', parScore);
 
   const scrollX = useRef(new Animated.Value(0)).current;
+  const slidesRef = useRef(null);
 
   const viewableItemsChanged = useRef(({ viewableItems }) => {
     setCurrentIndex(viewableItems[0].index);
@@ -23,7 +25,13 @@ export default function PostRound() {
       <FlatList
         data={postSlides}
         renderItem={({ item }) => (
-          <PostRoundItem item={item} setScore={setScore} score={score} />
+          <PostRoundItem
+            item={item}
+            setScore={setScore}
+            score={score}
+            parScore={parScore}
+            setParScore={setParScore}
+          />
         )}
         horizontal
         showsHorizontalScrollIndicator
