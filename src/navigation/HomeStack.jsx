@@ -42,8 +42,5 @@ export default function HomeStack() {
         }}
       />
     </Tab.Navigator>
-    // <Stack.Navigator>
-    //   <Stack.Screen name="Home" component={HomeScreen} />
-    // </Stack.Navigator>
   );
 }

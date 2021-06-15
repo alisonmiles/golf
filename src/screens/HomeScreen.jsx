@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import FormButton from '../components/FormButton';
+import Feed from '../components/Feed';
 import { AuthContext } from '../navigation/AuthProvider';
 
 export default function HomeScreen() {
-  const { user, logout } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  console.log(user.uid);
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Welcome {user.uid}</Text>
+      <Feed />
     </View>
   );
 }

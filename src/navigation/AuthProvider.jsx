@@ -5,6 +5,7 @@ const { firebase, db } = firebaseSetup;
 
 export const AuthContext = createContext({});
 
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   return (

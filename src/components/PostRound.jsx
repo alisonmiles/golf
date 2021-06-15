@@ -14,7 +14,8 @@ export default function PostRound({ navigation }) {
   const slidesRef = useRef(null);
 
   const viewableItemsChanged = useRef(({ viewableItems }) => {
-    setCurrentIndex(viewableItems[0].index);
+    
+    //setCurrentIndex(viewableItems[0].index);
   }).current;
 
   const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;

@@ -9,7 +9,7 @@ function FeedComponent() {
   const [usernames, setUsernames] = useState([]);
   // be refactored to use database structure with posts in their own separate collection
   // but linked to user via uid
-  db.collection('users')
+  firebaseSetup.db.collection('users')
     .get()
     .then((usersInCollection) => {
       const usernamesArray = [];
@@ -24,7 +24,7 @@ function FeedComponent() {
   if (usernames.length > 0) {
     const postsArray = [];
     for (let i = 0; i < usernames.length; i++) {
-      db.collection('users')
+      firebaseSetup.db.collection('users')
         .doc(usernames[i])
         .collection('posts')
         .onSnapshot((posts) => {

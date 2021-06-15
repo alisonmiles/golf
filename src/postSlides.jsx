@@ -8,6 +8,7 @@ export default [
       coursePar: '70',
     },
   },
+  
   {
     id: '2',
     title: 'Hole 1',

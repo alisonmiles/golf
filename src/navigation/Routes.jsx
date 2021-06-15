@@ -7,6 +7,8 @@ import { AuthContext } from './AuthProvider';
 import Loading from '../components/Loading';
 const { firebase } = firebaseSetup;
 
+const { firebase } = firebaseSetup;
+
 export default function Routes() {
   const { user, setUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
