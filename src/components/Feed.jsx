@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, StyleSheet, SafeAreaView } from 'react-native';
+
 import { useState, useEffect } from 'react/cjs/react.development';
 import firebaseSetup from '../firebase/config.js';
 
@@ -25,10 +26,22 @@ function Feed() {
   else {
     return (
       <FlatList
+        ItemSeparatorComponent={() => {
+          return (
+            <View
+              style={{
+                height: 20,
+                width: '100%',
+                backgroundColor: '#f5f5f1',
+                //   marginLeft: '14%',
+              }}
+            />
+          );
+        }}
         data={posts}
         numColumns={1}
         renderItem={({ item }) => (
-          <View>
+          <View style={styles.FeedItem}>
             <Text>Course Name:{item.coursename}</Text>
             <Text>Score:{item.score}</Text>
             <Text>Date: {new Date(item.key.seconds).toString()}</Text>
@@ -40,5 +53,13 @@ function Feed() {
     );
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  FeedItem: {
+    backgroundColor: '#FFF',
+  },
+});
 
 export default Feed;

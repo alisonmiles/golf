@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import Feed from '../components/Feed';
 import { AuthContext } from '../navigation/AuthProvider';
 
@@ -7,10 +7,10 @@ export default function HomeScreen() {
   const { user } = useContext(AuthContext);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.text}>Welcome {user.uid}</Text>
       <Feed />
-    </View>
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
