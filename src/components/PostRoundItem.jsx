@@ -10,6 +10,7 @@ import {
   Alert,
 } from 'react-native';
 import firebaseSetup from '../firebase/config';
+import { useNavigation, NavigationContainer } from '@react-navigation/native';
 
 const { firebase, db } = firebaseSetup;
 
@@ -26,6 +27,8 @@ export default function PostRoundItem({
 
   const { user } = useContext(AuthContext);
 
+  const navigation = useNavigation();
+
   const sendToDb = () => {
     db.collection('posts')
       .add({
@@ -36,10 +39,10 @@ export default function PostRoundItem({
         uid: user.uid, // gotten from user context
       })
       .then((documentReference) => {
-        Alert.alert('Score submitted');
-        // console.log(documentReference);
+        console.log('done');
       })
       .catch((err) => {
+        Alert.alert('An Error Occured :(');
         console.log(err);
       });
   };
@@ -88,6 +91,7 @@ export default function PostRoundItem({
             onPress={() => {
               setOverUnder(score - parScore);
               sendToDb();
+              navigation.navigate('Home', {});
             }}
           ></Button>
         ) : null}

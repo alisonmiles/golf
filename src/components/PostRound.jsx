@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, FlatList, Animated } from 'react-native';
 import postSlides from '../postSlides';
 import PostRoundItem from './PostRoundItem';
 
-export default function PostRound() {
+export default function PostRound({ navigation }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [parScore, setParScore] = useState(0);
