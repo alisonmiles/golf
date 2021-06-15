@@ -29,10 +29,12 @@ export default function PostRoundItem({
 
   const navigation = useNavigation();
 
+  console.log(overUnder);
+
   const sendToDb = () => {
     db.collection('posts')
       .add({
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(), //unchanged
+        key: firebase.firestore.FieldValue.serverTimestamp(), //unchanged
         coursename: 'Heworth Golf Club', // will be hardcoded
         score: score, // gotten from state
         overUnderPar: overUnder, // ditto
@@ -81,7 +83,13 @@ export default function PostRoundItem({
             ></TextInput>
 
             <Text>Total: {score}</Text>
-            <Text> Over/Under {score - parScore}</Text>
+            <Text>
+              {' '}
+              Over/Under{' '}
+              {score - parScore > 0
+                ? `+ ${score - parScore}`
+                : score - parScore}
+            </Text>
           </View>
         ) : null}
 
@@ -105,6 +113,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    borderColor: 'black',
   },
   input: {
     height: 60,
