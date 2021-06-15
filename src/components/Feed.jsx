@@ -19,42 +19,29 @@ function Feed() {
     });
     setPosts(postsArray);
     setHasPosts(true);
-  }, []);
+  }, [hasPosts]);
 
-  //   const data = posts;
-  console.log(data, 'data', posts, 'posts');
+  console.log(posts, '<<< posts', hasPosts, '<<< boolean');
 
-  const data = [
-    {
-      uid: 'SbVQIGfzvBh2xwaMAA7mq21Xp2s2',
-      coursename: 'whatever',
-      scores: 54,
-    },
-    { coursename: 'hello' },
-  ];
-
-  // flatlist will not render data that comes from state
-  // nchelp??
-
-  return (
-    <View>
+  if (hasPosts === false) return <Text>Posts Loading...</Text>;
+  else {
+    return (
       <FlatList
-        data={data}
+        data={posts}
         numColumns={1}
         renderItem={({ item }) => (
           <View>
-            <Text>{item.coursename}</Text>
-            <Text>{item.score}</Text>
+            <Text>Course Name:{item.coursename}</Text>
+            <Text>Score:{item.scores}</Text>
           </View>
         )}
         listKey={(item) => {
           item.key;
         }}
-        extraData={hasPosts}
+        extraData={posts}
       />
-    </View>
-  );
+    );
+  }
 }
-// }
 
 export default Feed;
