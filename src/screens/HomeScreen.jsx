@@ -1,14 +1,22 @@
 import React, { useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Feed from '../components/Feed';
+import { UserContext } from '../navigation/Routes';
 import { AuthContext } from '../navigation/AuthProvider';
+import Loading from '../components/Loading';
 
 export default function HomeScreen() {
   const { user } = useContext(AuthContext);
-  console.log(user.uid);
+  const { returnedUser } = useContext(UserContext);
+
+  console.log(returnedUser);
+
+  if (!returnedUser) {
+    return <Loading />;
+  }
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Welcome {user.uid}</Text>
+      <Text style={styles.text}>Welcome {returnedUser.username}</Text>
       <Feed />
     </View>
   );
