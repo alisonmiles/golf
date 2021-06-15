@@ -1,7 +1,7 @@
 export default [
   {
     id: '1',
-    title: 'Choose Your Course',
+    title: 'Your Golf Course',
     option1: {
       courseName: 'Heworth Golf Club',
       location: 'York',
