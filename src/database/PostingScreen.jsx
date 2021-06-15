@@ -1,17 +1,19 @@
 import React from 'react';
 import styles from '../../style-sheet';
-import { firebase, db } from '../firebase/config.js';
+import firebaseSetup from '../firebase/config.js';
 import { Button } from 'react-native';
+
 function PostingScreen() {
+  const [scores, setScores] = useState();
   function pressButton() {
-    db.collection('users')
-      .doc('mr heworth')
+    firebaseSetup.db
       .collection('posts')
       .add({
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        coursename: 'Im a cat',
-        scores: 70,
-        username: 'mr heworth',
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(), //unchanged
+        coursename: 'Im a cat', // will be hardcoded
+        score: score, // gotten from state
+        overUnderPar: 2, // ditto
+        uid: user.uid, // gotten from user context
       })
       .then((documentReference) => {
         console.log(documentReference);

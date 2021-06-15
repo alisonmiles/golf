@@ -9,7 +9,8 @@ export default function PostRound() {
   const scrollX = useRef(new Animated.Value(0)).current;
 
   const viewableItemsChanged = useRef(({ viewableItems }) => {
-    setCurrentIndex(viewableItems[0].index);
+    
+    //setCurrentIndex(viewableItems[0].index);
   }).current;
 
   const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;

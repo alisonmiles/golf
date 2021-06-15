@@ -9,7 +9,6 @@ import {
 import FormButton from '../components/FormButton';
 import FormInput from '../components/FormInput';
 import { AuthContext } from '../navigation/AuthProvider';
-// import stylesSheet from '../../style-sheet';
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
