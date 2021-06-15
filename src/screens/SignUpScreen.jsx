@@ -17,22 +17,23 @@ export default function SignupScreen({ navigation }) {
         <Text style={styles.text}>Create an account</Text>
         <FormInput
           value={email}
-          placeholderText="Email"
+          placeholderText='Email'
           onChangeText={(userEmail) => setEmail(userEmail)}
-          autoCapitalize="none"
-          keyboardType="email-address"
+          autoCapitalize='none'
+          keyboardType='email-address'
           autoCorrect={false}
         />
         <FormInput
           value={password}
-          placeholderText="Password"
+          placeholderText='Password'
           onChangeText={(userPassword) => setPassword(userPassword)}
           secureTextEntry={true}
         />
         <FormButton
-          buttonTitle="Signup"
+          buttonTitle='Signup'
           onPress={() => {
             register(email, password);
+            navigation.navigate('SecondSignUp');
           }}
         />
       </View>

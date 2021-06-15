@@ -4,15 +4,12 @@ import { AuthContext } from '../navigation/AuthProvider.jsx';
 import { Text, TextInput, StyleSheet, View, Button } from 'react-native';
 import AvatarRadioButton from '../components/AvatarRadioButton';
 
-
-export const UserDatabaseAdder = () => {
+function SecondSignUpScreen() {
   const { user } = useContext(AuthContext);
   const [userName, setUserName] = useState('');
   const [firstName, setFirstName] = useState('');
   const [selectedAvatar, setSelectedAvatar] = useState('');
   const [handicap, setHandicap] = useState([]);
-
-  console.log(userName);
 
   function createUser() {
     firebaseSetup.db
@@ -34,51 +31,53 @@ export const UserDatabaseAdder = () => {
   }
 
   return (
-      <View style={styles.container}>
-        <TextInput
-          onChangeText={(event) => {
-            setUserName(event);
+    <View style={styles.container}>
+      <TextInput
+        onChangeText={(event) => {
+          setUserName(event);
+        }}
+        placeholder='Choose your Username'
+        value={userName}
+        style={styles.inputField}
+      />
+      <TextInput
+        onChangeText={(event) => {
+          setFirstName(event);
+        }}
+        placeholder='First Name'
+        value={firstName}
+        style={styles.inputField}
+      />
+      <TextInput
+        onChangeText={(event) => {
+          setHandicap(event);
+        }}
+        placeholder='Your Current Handicap'
+        value={handicap}
+        style={styles.inputField}
+      />
+      <AvatarRadioButton
+        selectedAvatar={selectedAvatar}
+        setSelectedAvatar={setSelectedAvatar}
+      />
+      {userName.length > 0 &&
+      firstName.length > 0 &&
+      selectedAvatar.length > 0 &&
+      handicap.length > 0 ? (
+        <Button
+          title='Submit'
+          onPress={() => {
+            createUser();
           }}
-          placeholder='Choose your Username'
-          value={userName}
-          style={styles.inputField}
         />
-        <TextInput
-          onChangeText={(event) => {
-            setFirstName(event);
-          }}
-          placeholder='First Name'
-          value={firstName}
-          style={styles.inputField}
-        />
-        <TextInput
-          onChangeText={(event) => {
-            setHandicap(event);
-          }}
-          placeholder='Your Current Handicap'
-          value={handicap}
-          style={styles.inputField}
-        />
-        <AvatarRadioButton
-          selectedAvatar={selectedAvatar}
-          setSelectedAvatar={setSelectedAvatar}
-        />
-        {userName.length > 0 &&
-        firstName.length > 0 &&
-        selectedAvatar.length > 0 &&
-        handicap.length > 0 ? (
-          <Button
-            title='Submit'
-            onPress={() => {
-              createUser();
-            }}
-          />
-        ) : (
-          <Text>Please fill in all fields</Text>
-        )}
-      </View>
+      ) : (
+        <Text>Please fill in all fields</Text>
+      )}
+    </View>
   );
-};
+}
+
+export default SecondSignUpScreen;
 
 const styles = StyleSheet.create({
   container: {

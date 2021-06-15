@@ -30,7 +30,7 @@ function Feed() {
         renderItem={({ item }) => (
           <View>
             <Text>Course Name:{item.coursename}</Text>
-            <Text>Score:{item.scores}</Text>
+            <Text>Score:{item.score}</Text>
             <Text>Date: {new Date(item.key.seconds).toString()}</Text>
           </View>
         )}
