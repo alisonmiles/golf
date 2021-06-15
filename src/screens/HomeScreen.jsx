@@ -5,7 +5,7 @@ import { AuthContext } from '../navigation/AuthProvider';
 
 export default function HomeScreen() {
   const { user } = useContext(AuthContext);
-  console.log(user.uid);
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Welcome {user.uid}</Text>
