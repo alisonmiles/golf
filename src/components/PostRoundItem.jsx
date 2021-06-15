@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../navigation/AuthProvider';
 import {
   StyleSheet,
   Text,
@@ -7,9 +8,9 @@ import {
   TextInput,
   Button,
 } from 'react-native';
-import firebase from 'firebase/app';
+import firebaseSetup from '../firebase/config';
 
-const { db } = firebase;
+const { firebase, db } = firebaseSetup;
 
 export default function PostRoundItem({
   item,
@@ -20,21 +21,24 @@ export default function PostRoundItem({
 }) {
   const { width } = useWindowDimensions();
   const [number, onChangeNumber] = useState(0);
+  const [overUnder, setOverUnder] = useState(0);
+
+  const { user } = useContext(AuthContext);
 
   const sendToDb = () => {
     db.collection('posts')
       .add({
         timestamp: firebase.firestore.FieldValue.serverTimestamp(), //unchanged
-        coursename: 'Im a cat', // will be hardcoded
+        coursename: 'Heworth Golf Club', // will be hardcoded
         score: score, // gotten from state
-        overUnderPar: 2, // ditto
+        overUnderPar: overUnder, // ditto
         uid: user.uid, // gotten from user context
       })
       .then((documentReference) => {
-        // console.log(documentReference);
+        console.log(documentReference);
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
       });
   };
 
@@ -56,11 +60,10 @@ export default function PostRoundItem({
             <TextInput
               style={styles.input}
               onChangeText={onChangeNumber}
-              value={number}
+              // value={number}
               onSubmitEditing={() => {
                 setScore((currScore) => {
-                  return currScore + Number(number);
-                  //item.id
+                  return currScore + parseInt(number);
                 });
                 setParScore((currPar) => {
                   return currPar + item.par;
@@ -69,6 +72,7 @@ export default function PostRoundItem({
               placeholder="Enter your score"
               keyboardType="numeric"
               textAlign="center"
+              returnKeyType="done"
             ></TextInput>
 
             <Text>Total: {score}</Text>
@@ -80,6 +84,7 @@ export default function PostRoundItem({
           <Button
             title="Post My Round"
             onPress={() => {
+              setOverUnder(score - parScore);
               sendToDb();
             }}
           ></Button>
