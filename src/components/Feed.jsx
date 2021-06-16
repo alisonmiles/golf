@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, SafeAreaView } from 'react-native';
-
+import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
 import { useState, useEffect } from 'react/cjs/react.development';
 import firebaseSetup from '../firebase/config.js';
 
@@ -19,6 +18,7 @@ function Feed() {
       });
     });
     setPosts(postsArray);
+    console.log(posts);
     setHasPosts(true);
   }, [hasPosts]);
 
@@ -40,14 +40,20 @@ function Feed() {
         }}
         data={posts}
         numColumns={1}
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <View style={styles.FeedItem}>
             <Text>Course Name:{item.coursename}</Text>
-            <Text>Score:{item.score}</Text>
-            <Text>Date: {new Date(item.key.seconds).toString()}</Text>
+            <Text>Gross Score:{item.score}</Text>
+            <Text>Over/Under Par: {item.overUnderPar}</Text>
+            {/* <Text>Date: {new Date(item.key.seconds * 1000).toString()}</Text> */}
+            <Text>Golfer: {item.username}</Text>
+            {/* <Image source={require(`../../assets/${item.avatar}`)} /> */}
+            <View>
+              <Image style={styles.avatar} source={item.avatar} />
+            </View>
           </View>
         )}
-        keyExtractor={(item) => item.key.toString()}
+        keyExtractor={(item, index) => 'key' + index}
         extraData={posts}
       />
     );
@@ -59,6 +65,10 @@ const styles = StyleSheet.create({
   },
   FeedItem: {
     backgroundColor: '#FFF',
+  },
+  avatar: {
+    width: 30,
+    height: 30,
   },
 });
 

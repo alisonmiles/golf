@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../navigation/AuthProvider';
+import { UserContext } from '../navigation/Routes';
 import {
   StyleSheet,
   Text,
@@ -25,8 +26,10 @@ export default function PostRoundItem({
 }) {
   const { width } = useWindowDimensions();
   const [number, onChangeNumber] = useState(0);
+  const [date, onChangeDate] = useState(0);
 
   const { user } = useContext(AuthContext);
+  const { returnedUser } = useContext(UserContext);
 
   const navigation = useNavigation();
 
@@ -38,6 +41,9 @@ export default function PostRoundItem({
         score: score, // gotten from state
         overUnderPar: overUnder, // ditto
         uid: user.uid, // gotten from user context
+        avatar: returnedUser.avatar,
+        username: returnedUser.username,
+        firstname: returnedUser.firstname,
       })
       .then((documentReference) => {
         console.log('done');

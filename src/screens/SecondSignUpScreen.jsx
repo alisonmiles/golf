@@ -29,6 +29,7 @@ function SecondSignUpScreen() {
         console.error('Error writing document: ', error);
       });
   }
+  console.log(selectedAvatar);
 
   return (
     <View style={styles.container}>

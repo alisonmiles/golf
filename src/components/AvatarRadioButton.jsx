@@ -9,7 +9,7 @@ export default function AvatarRadioButton({
     {
       id: 'maleGolferShaded',
       img: require('../../assets/golfer.png'),
-      imgFileName: 'golfer.png',
+      imgFileName: '../../assets/golfer.png',
     },
     {
       id: 'maleGolferOutlined',
