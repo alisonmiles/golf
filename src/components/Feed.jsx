@@ -32,7 +32,7 @@ function Feed() {
               style={{
                 height: 15,
                 width: windowWidth / 1.15,
-                backgroundColor: '#f5f5f1',
+                // backgroundColor: '#f5f5f1',
               }}
             />
           );

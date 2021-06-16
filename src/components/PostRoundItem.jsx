@@ -102,44 +102,100 @@ export default function PostRoundItem({
               {item.title}
             </Text>
             <View style={styles.holeInfo}>
-              <Text style={{ flex: 1, textAlign: 'center' }}>
-                PAR {item.par}
+              <Text
+                style={{
+                  flex: 1,
+                  textAlign: 'center',
+                  fontSize: 16,
+                  opacity: 0.7,
+                }}
+              >
+                PAR
               </Text>
-              <Text style={{ flex: 1, textAlign: 'center' }}>
-                {item.yards} YARDS
+              <Text
+                style={{
+                  flex: 1,
+                  textAlign: 'center',
+                  fontSize: 16,
+                  opacity: 0.7,
+                }}
+              >
+                YARDS
               </Text>
-              <Text style={{ flex: 1, textAlign: 'center' }}>
-                S.I {item.strokeIndex}
+              <Text
+                style={{
+                  flex: 1,
+                  textAlign: 'center',
+                  fontSize: 16,
+                  opacity: 0.7,
+                }}
+              >
+                S.I
               </Text>
             </View>
-            <TextInput
-              style={styles.input}
-              onChangeText={onChangeNumber}
-              // value={number}
-              onSubmitEditing={() => {
-                setScore((currScore) => {
-                  return currScore + parseInt(number);
-                });
-                setParScore((currPar) => {
-                  return currPar + item.par;
-                });
-                // setOverUnder(() => {
-                //   console.log('score is', score, 'parScore is', parScore);
-                //   return score - parScore;
-                // });
-              }}
-              placeholder="Enter your score"
-              keyboardType="numeric"
-              textAlign="center"
-              returnKeyType="done"
-            ></TextInput>
-
-            <Text>Total: {score}</Text>
-            <Text>
-              {' '}
-              Over/Under{' '}
-              {score - parScore > 0 ? `+${score - parScore}` : score - parScore}
-            </Text>
+            <View style={styles.holeInfo}>
+              <Text style={{ flex: 1, textAlign: 'center' }}>{item.par}</Text>
+              <Text style={{ flex: 1, textAlign: 'center' }}>{item.yards}</Text>
+              <Text style={{ flex: 1, textAlign: 'center' }}>
+                {item.strokeIndex}
+              </Text>
+            </View>
+            <View style={{ alignItems: 'center' }}>
+              <TextInput
+                style={styles.input}
+                onChangeText={onChangeNumber}
+                // value={number}
+                onSubmitEditing={() => {
+                  setScore((currScore) => {
+                    return currScore + parseInt(number);
+                  });
+                  setParScore((currPar) => {
+                    return currPar + item.par;
+                  });
+                  // setOverUnder(() => {
+                  //   console.log('score is', score, 'parScore is', parScore);
+                  //   return score - parScore;
+                  // });
+                }}
+                placeholder="Enter score"
+                keyboardType="numeric"
+                alignItems="center"
+                textAlign="center"
+                returnKeyType="done"
+              ></TextInput>
+            </View>
+            <View style={styles.holeInfo}>
+              <Text
+                style={{
+                  flex: 1,
+                  textAlign: 'center',
+                  fontSize: 30,
+                  color: 'green',
+                }}
+              >
+                {score}
+              </Text>
+              <Text
+                style={{
+                  flex: 1,
+                  textAlign: 'center',
+                  fontSize: 30,
+                  color: 'green',
+                }}
+              >
+                {score - parScore > 0
+                  ? `+${score - parScore}`
+                  : score - parScore}
+              </Text>
+            </View>
+            <View style={styles.holeInfo}>
+              <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
+                Gross Score
+              </Text>
+              <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
+                Over/Under
+              </Text>
+            </View>
           </View>
         ) : null}
 
@@ -169,11 +225,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   input: {
-    height: 100,
+    height: 120,
     width: 140,
-    margin: 12,
+    margin: 20,
     borderWidth: 1,
-    alignItems: 'center',
-    textAlign: 'center',
+    fontSize: 30,
   },
 });
