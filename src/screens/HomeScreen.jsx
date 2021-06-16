@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import Feed from '../components/Feed';
 import { UserContext } from '../navigation/Routes';
 import { AuthContext } from '../navigation/AuthProvider';
@@ -9,18 +9,18 @@ export default function HomeScreen() {
   const { user } = useContext(AuthContext);
   const { returnedUser } = useContext(UserContext);
 
-  console.log(returnedUser);
-
   if (!returnedUser) {
     return <Loading />;
   }
+
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.text}>Welcome {returnedUser.username}</Text>
       <Feed />
-    </View>
+    </SafeAreaView>
   );
-}
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

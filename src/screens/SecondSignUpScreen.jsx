@@ -36,7 +36,7 @@ function SecondSignUpScreen() {
         onChangeText={(event) => {
           setUserName(event);
         }}
-        placeholder='Choose your Username'
+        placeholder="Choose your Username"
         value={userName}
         style={styles.inputField}
       />
@@ -44,7 +44,7 @@ function SecondSignUpScreen() {
         onChangeText={(event) => {
           setFirstName(event);
         }}
-        placeholder='First Name'
+        placeholder="First Name"
         value={firstName}
         style={styles.inputField}
       />
@@ -52,7 +52,7 @@ function SecondSignUpScreen() {
         onChangeText={(event) => {
           setHandicap(event);
         }}
-        placeholder='Your Current Handicap'
+        placeholder="Your Current Handicap"
         value={handicap}
         style={styles.inputField}
       />
@@ -65,9 +65,10 @@ function SecondSignUpScreen() {
       selectedAvatar.length > 0 &&
       handicap.length > 0 ? (
         <Button
-          title='Submit'
+          title="Submit"
           onPress={() => {
             createUser();
+            navigation.navigate('home');
           }}
         />
       ) : (
