@@ -1,16 +1,10 @@
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import {
-  SafeAreaView,
-  SafeAreaProvider,
-  SafeAreaInsetsContext,
-  useSafeAreaInsets,
-  initialWindowMetrics,
-} from 'react-native-safe-area-context';
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import Feed from '../components/Feed';
 import { UserContext } from '../navigation/Routes';
 import { AuthContext } from '../navigation/AuthProvider';
 import Loading from '../components/Loading';
+import { windowHeight, windowWidth } from '../utils/Dimensions';
 
 export default function HomeScreen() {
   const { user } = useContext(AuthContext);
@@ -35,6 +29,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#f5f5f1',
     top: 50,
+    // width: windowWidth / 1.5,
+    
   },
   text: {
     fontSize: 20,

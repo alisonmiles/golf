@@ -14,17 +14,17 @@ export default function AvatarRadioButton({
     {
       id: 'maleGolferOutlined',
       img: require('../../assets/golfer(1).png'),
-      imgFileName: 'golfer(1).png',
+      imgFileName: '../../assets/golfer(1).png',
     },
     {
       id: 'femaleGolferOutlined',
       img: require('../../assets/golfer(2).png'),
-      imgFileName: 'golfer(2).png',
+      imgFileName: '../../assets/golfer(2).png',
     },
     {
       id: 'femaleGolferShaded',
       img: require('../../assets/golfer(3).png'),
-      imgFileName: 'golfer(3).png',
+      imgFileName: '../../assets/golfer(3).png',
     },
   ];
 

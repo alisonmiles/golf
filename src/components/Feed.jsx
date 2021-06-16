@@ -18,7 +18,6 @@ function Feed() {
       });
     });
     setPosts(postsArray);
-    console.log(posts);
     setHasPosts(true);
   }, [hasPosts]);
 
@@ -33,7 +32,6 @@ function Feed() {
                 height: 20,
                 width: '100%',
                 backgroundColor: '#f5f5f1',
-                //   marginLeft: '14%',
               }}
             />
           );
@@ -65,6 +63,7 @@ const styles = StyleSheet.create({
   },
   FeedItem: {
     backgroundColor: '#FFF',
+    //need to work out how to make each post fill more of the screen
   },
   avatar: {
     width: 30,
