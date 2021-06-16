@@ -55,7 +55,7 @@ export default function ProfileScreen() {
     <SafeAreaView style={styles.container}>
       <FormButton
         style={styles.logoutButton}
-        buttonTitle='Logout'
+        buttonTitle="Logout"
         onPress={() => logout()}
       />
       {/* <View style={styles.container}> */}
@@ -89,6 +89,7 @@ export default function ProfileScreen() {
         )}
         keyExtractor={(item, index) => index.toString()}
         extraData={userPosts}
+        showsVerticalScrollIndicator={false}
       />
     </SafeAreaView>
     // </View>

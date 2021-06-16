@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import firebaseSetup from '../firebase/config';
 import { useNavigation, NavigationContainer } from '@react-navigation/native';
+import { windowWidth, windowHeight } from '../utils/Dimensions';
 
 const { firebase, db } = firebaseSetup;
 
@@ -56,19 +57,58 @@ export default function PostRoundItem({
 
   return (
     <View style={[styles.container, { width }]}>
-      <View>
-        <Text>{item.title}</Text>
+      <View
+        style={{
+          backgroundColor: '#FFF',
+          width: windowWidth / 1.15,
+          // height: windowHeight / 1.5,
+          // alignItems: 'center',
+          borderRadius: 5,
+          padding: 20,
+          borderRadius: 5,
+          elevation: 3,
+          // zIndex:999 - might need for IOS
+          shadowColor: '#000',
+          shadowOffset: {
+            width: 5,
+            height: 5,
+          },
+          shadowOpacity: 1,
+          shadowRadius: 10,
+        }}
+      >
         {item.id === '1' ? (
           <View>
-            <Text>{item.option1.courseName}</Text>
-            <Text>{item.option1.location}</Text>
-            <Text>Par {item.option1.coursePar}</Text>
+            <Text style={{ fontSize: 25, fontWeight: '700', marginBottom: 2 }}>
+              {item.title}
+            </Text>
+            <Text style={{ fontSize: 18, fontWeight: '500' }}>
+              {item.option1.courseName}
+            </Text>
+            <Text style={{ fontSize: 15, fontWeight: '500' }}>
+              {item.option1.location}
+            </Text>
+            <Text style={{ fontSize: 15, fontWeight: '500', opacity: 0.6 }}>
+              Par {item.option1.coursePar}
+            </Text>
+            <Text style={{ fontSize: 15, fontWeight: '500', opacity: 0.6 }}>
+              Good luck!
+            </Text>
           </View>
         ) : null}
         {item.id !== '1' ? (
-          <View>
-            <Text>PAR {item.par}</Text>
-            <Text>{item.yards} YARDS</Text>
+          <View style={{}}>
+            <Text style={{ fontSize: 25, fontWeight: '700' }}>
+              {item.title}
+            </Text>
+            <View style={styles.holeInfo}>
+              <Text style={{ flex: 1, textAlign: 'center' }}>
+                PAR {item.par}
+              </Text>
+              <Text style={{ flex: 1, textAlign: 'center' }}>
+                {item.yards} YARDS
+              </Text>
+            </View>
             <TextInput
               style={styles.input}
               onChangeText={onChangeNumber}
@@ -120,7 +160,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: 'black',
+  },
+  holeInfo: {
+    flexDirection: 'row',
+    textAlign: 'center',
   },
   input: {
     height: 60,
