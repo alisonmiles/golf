@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Text, View, StyleSheet, FlatList, Animated } from 'react-native';
 import postSlides from '../postSlides';
 import PostRoundItem from './PostRoundItem';
@@ -7,14 +7,19 @@ export default function PostRound({ navigation }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [parScore, setParScore] = useState(0);
-  // console.log('score is', score);
+  const [overUnder, setOverUnder] = useState(0);
+  console.log('score is', score);
   console.log('parScore is', parScore);
+  console.log('overUnder is', overUnder);
+
+  useEffect(() => {
+    setOverUnder(score - parScore);
+  }, [score, parScore]);
 
   const scrollX = useRef(new Animated.Value(0)).current;
   const slidesRef = useRef(null);
 
   const viewableItemsChanged = useRef(({ viewableItems }) => {
-    
     //setCurrentIndex(viewableItems[0].index);
   }).current;
 
@@ -32,6 +37,8 @@ export default function PostRound({ navigation }) {
             score={score}
             parScore={parScore}
             setParScore={setParScore}
+            overUnder={overUnder}
+            setOverUnder={setOverUnder}
           />
         )}
         horizontal

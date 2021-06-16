@@ -20,16 +20,15 @@ export default function PostRoundItem({
   score,
   parScore,
   setParScore,
+  overUnder,
+  setOverUnder,
 }) {
   const { width } = useWindowDimensions();
   const [number, onChangeNumber] = useState(0);
-  const [overUnder, setOverUnder] = useState(0);
 
   const { user } = useContext(AuthContext);
 
   const navigation = useNavigation();
-
-  console.log(overUnder);
 
   const sendToDb = () => {
     db.collection('posts')
@@ -75,6 +74,10 @@ export default function PostRoundItem({
                 setParScore((currPar) => {
                   return currPar + item.par;
                 });
+                // setOverUnder(() => {
+                //   console.log('score is', score, 'parScore is', parScore);
+                //   return score - parScore;
+                // });
               }}
               placeholder="Enter your score"
               keyboardType="numeric"
@@ -86,9 +89,7 @@ export default function PostRoundItem({
             <Text>
               {' '}
               Over/Under{' '}
-              {score - parScore > 0
-                ? `+ ${score - parScore}`
-                : score - parScore}
+              {score - parScore > 0 ? `+${score - parScore}` : score - parScore}
             </Text>
           </View>
         ) : null}
@@ -97,7 +98,7 @@ export default function PostRoundItem({
           <Button
             title="Post My Round"
             onPress={() => {
-              setOverUnder(score - parScore);
+              // setOverUnder(score - parScore);
               sendToDb();
               navigation.navigate('Home', {});
             }}
