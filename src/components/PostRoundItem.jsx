@@ -108,6 +108,9 @@ export default function PostRoundItem({
               <Text style={{ flex: 1, textAlign: 'center' }}>
                 {item.yards} YARDS
               </Text>
+              <Text style={{ flex: 1, textAlign: 'center' }}>
+                S.I {item.strokeIndex}
+              </Text>
             </View>
             <TextInput
               style={styles.input}
@@ -166,9 +169,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   input: {
-    height: 60,
+    height: 100,
     width: 140,
     margin: 12,
     borderWidth: 1,
+    alignItems: 'center',
+    textAlign: 'center',
   },
 });
