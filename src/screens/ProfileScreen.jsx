@@ -54,11 +54,6 @@ export default function ProfileScreen() {
   }
   return (
     <SafeAreaView style={styles.container}>
-      <FormButton
-        style={styles.logoutButton}
-        buttonTitle="Logout"
-        onPress={() => logout()}
-      />
       {/* <View style={styles.container}> */}
       <Text style={styles.text}>Hello {returnedUser.firstname}</Text>
       <Text style={styles.text}>Username: {returnedUser.username}</Text>
@@ -88,6 +83,16 @@ export default function ProfileScreen() {
             <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
               Course Name: {item.coursename}
             </Text>
+            <Text
+              style={{
+                flex: 1,
+                textAlign: 'center',
+                opacity: 0.7,
+                marginTop: 10,
+              }}
+            >
+              Date: {new Date(item.key.seconds * 1000).toDateString()}
+            </Text>
             <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
               Gross Score:{' '}
               <Text
@@ -114,15 +119,15 @@ export default function ProfileScreen() {
                 {item.overUnderPar}{' '}
               </Text>
             </Text>
-            <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
-              Date: {new Date(item.key.seconds * 1000).toString()}
-            </Text>
           </View>
         )}
         keyExtractor={(item, index) => index.toString()}
         extraData={userPosts}
         showsVerticalScrollIndicator={false}
       />
+                <View style={{marginBottom: 90}}>
+                  <FormButton buttonTitle='Logout' onPress={() => logout()} />
+                </View>
     </SafeAreaView>
     // </View>
   );
