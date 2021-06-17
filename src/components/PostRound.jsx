@@ -8,9 +8,6 @@ export default function PostRound({ navigation }) {
   const [score, setScore] = useState(0);
   const [parScore, setParScore] = useState(0);
   const [overUnder, setOverUnder] = useState(0);
-  console.log('score is', score);
-  console.log('parScore is', parScore);
-  console.log('overUnder is', overUnder);
 
   useEffect(() => {
     setOverUnder(score - parScore);

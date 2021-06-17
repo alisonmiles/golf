@@ -4,6 +4,7 @@ import Feed from '../components/Feed';
 import { UserContext } from '../navigation/Routes';
 import { AuthContext } from '../navigation/AuthProvider';
 import Loading from '../components/Loading';
+import { windowHeight, windowWidth } from '../utils/Dimensions';
 
 export default function HomeScreen() {
   const { user } = useContext(AuthContext);
@@ -19,7 +20,7 @@ export default function HomeScreen() {
       <Feed />
     </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -27,6 +28,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#f5f5f1',
+    top: 50,
   },
   text: {
     fontSize: 20,
