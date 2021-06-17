@@ -54,13 +54,23 @@ export default function ProfileScreen() {
   }
   return (
     <SafeAreaView style={styles.container}>
-      {/* <View style={styles.container}> */}
-      <Text style={styles.text}>Hello {returnedUser.firstname}</Text>
-      <Text style={styles.text}>Username: {returnedUser.username}</Text>
-      <Text style={styles.text}>Current Handicap: {returnedUser.handicap}</Text>
-      <Image source={avatar} style={styles.avatar}></Image>
-      {/* </View> */}
-      <Text style={styles.RoundHeader}>Your Previous Rounds:</Text>
+      <View style={{ alignItems: 'center' }}>
+        <View style={styles.profileInfo}>
+          <Image source={avatar} style={styles.avatar}></Image>
+          <View style={{ alignItems: 'center', top: 20 }}>
+            <Text style={{ fontSize: 30, color: 'green' }}>
+              {returnedUser.handicap}
+            </Text>
+            <Text style={styles.text}>Handicap</Text>
+          </View>
+        </View>
+
+        <Text style={styles.text}>Hello {returnedUser.firstname}</Text>
+        <Text style={styles.text}>Username: {returnedUser.username}</Text>
+
+        <Text style={styles.RoundHeader}>Your Previous Rounds</Text>
+      </View>
+
       <FlatList
         ItemSeparatorComponent={() => {
           return (
@@ -81,7 +91,7 @@ export default function ProfileScreen() {
         renderItem={({ item }) => (
           <View style={styles.RoundInfo}>
             <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
-              Course Name: {item.coursename}
+              {item.coursename}
             </Text>
             <Text
               style={{
@@ -91,42 +101,50 @@ export default function ProfileScreen() {
                 marginTop: 10,
               }}
             >
-              Date: {new Date(item.key.seconds * 1000).toDateString()}
+              {new Date(item.key.seconds * 1000).toDateString()}
             </Text>
-            <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
-              Gross Score:{' '}
-              <Text
-                style={{
-                  flex: 1,
-                  textAlign: 'center',
-                  fontSize: 30,
-                  color: 'green',
-                }}
-              >
-                {item.score}
-              </Text>
-            </Text>
-            <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
-              Over/Under Par:{' '}
-              <Text
-                style={{
-                  flex: 1,
-                  textAlign: 'center',
-                  fontSize: 30,
-                  color: 'green',
-                }}
-              >
-                {item.overUnderPar}{' '}
-              </Text>
-            </Text>
+            <View style={{ marginTop: 15 }}>
+              <View style={styles.figures}>
+                <Text
+                  style={{
+                    flex: 1,
+                    textAlign: 'center',
+                    fontSize: 30,
+                    color: 'green',
+                  }}
+                >
+                  {item.score}
+                </Text>
+                <Text
+                  style={{
+                    flex: 1,
+                    textAlign: 'center',
+                    fontSize: 30,
+                    color: 'green',
+                  }}
+                >
+                  {item.overUnderPar}
+                </Text>
+              </View>
+              <View style={styles.figures}>
+                <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
+                  Gross Score
+                </Text>
+                <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
+                  Over/Under Par
+                </Text>
+              </View>
+            </View>
           </View>
         )}
         keyExtractor={(item, index) => index.toString()}
         extraData={userPosts}
         showsVerticalScrollIndicator={false}
       />
-      <View style={{ marginBottom: 90 }}>
-        <FormButton buttonTitle='Logout' onPress={() => logout()} />
+
+      <View style={{ marginBottom: 60 }}>
+        <FormButton buttonTitle="Logout" onPress={() => logout()} />
+
       </View>
     </SafeAreaView>
     // </View>
@@ -180,5 +198,12 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 1,
     shadowRadius: 10,
+  },
+  figures: {
+    flexDirection: 'row',
+    textAlign: 'center',
+  },
+  profileInfo: {
+    flexDirection: 'row',
   },
 });
