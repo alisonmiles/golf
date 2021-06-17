@@ -37,6 +37,9 @@ function Feed() {
         } else if (gottenPost.avatar === '../../assets/golfer(2).png') {
           gottenPost.imgSrc = avatar.img3.uri;
         } else gottenPost.imgSrc = avatar.img4.uri;
+        // const date = gottenPost.key.toDate().toLocaleTimeString();
+        // gottenPost.date = date;
+        // console.log(gottenPost);
         postsArray.push(gottenPost);
       });
       setPosts(postsArray);
@@ -75,9 +78,7 @@ function Feed() {
             <Text style={{ fontSize: 17, opacity: 0.6 }}>
               {item.coursename}
             </Text>
-            <Text>
-              Date: {new Date(item.key.seconds * 1000).toDateString()}
-            </Text>
+            {/* <Text>Date: {item.date}</Text> */}
             <View style={{ marginTop: 15 }}>
               <View style={styles.figures}>
                 <Text
