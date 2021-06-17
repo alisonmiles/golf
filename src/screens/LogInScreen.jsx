@@ -23,7 +23,7 @@ export default function LoginScreen({ navigation }) {
       <View style={styles.logoPosition}>
         <Image
           style={styles.logo}
-          source={require('../../assets/Partee-Logo.png')}
+          source={require('../../assets/ParTee-Logo.png')}
         ></Image>
       </View>
       <View style={styles.container}>
@@ -50,7 +50,6 @@ export default function LoginScreen({ navigation }) {
           buttonTitle='Login'
           onPress={() => login(email, password)}
         >
-          {' '}
           <Text style={styles.navButtonText}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -75,7 +74,7 @@ const styles = StyleSheet.create({
   textInput: {
     flex: 0.2,
     alignItems: 'center',
-    width: 400,
+    width: 300,
     margin: 20,
     borderWidth: 2,
     borderColor: 'white',
