@@ -3,6 +3,7 @@ import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
 import { useState, useEffect } from 'react/cjs/react.development';
 import firebaseSetup from '../firebase/config.js';
 import { windowWidth } from '../utils/Dimensions.js';
+import leaderBoardSorter from '../utils/LeaderboardSorter';
 
 const { db } = firebaseSetup;
 
@@ -19,6 +20,7 @@ function LeaderBoardScreen() {
           const gottenUser = user.data();
           usersArray.push(gottenUser);
         });
+        leaderBoardSorter(usersArray);
         setUsers(usersArray);
         setHasUsers(true);
       });
@@ -46,6 +48,9 @@ function LeaderBoardScreen() {
         numColumns={1}
         renderItem={({ item, index }) => (
           <View style={styles.FeedItem}>
+            <Text style={{ fontSize: 22, fontWeight: '700' }}>
+              {`Position ${item.position}`}
+            </Text>
             <Text style={{ fontSize: 22, fontWeight: '700' }}>
               <Text
                 style={{
