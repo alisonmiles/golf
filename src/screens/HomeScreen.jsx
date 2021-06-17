@@ -26,8 +26,10 @@ export default function HomeScreen() {
         source={require('../../assets/allb.jpeg')}
         style={styles.background}
       >
-        <Text style={styles.text}>Welcome {returnedUser.firstname}</Text>
-        <Feed />
+        <View style={{ top: 40 }}>
+          <Text style={styles.text}>Welcome {returnedUser.firstname}</Text>
+          <Feed />
+        </View>
       </ImageBackground>
     </SafeAreaView>
   );
@@ -36,11 +38,10 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
-    top: 50,
   },
   text: {
-    fontSize: 20,
+    fontSize: 30,
+    textAlign: 'center',
     color: '#333333',
   },
   background: {

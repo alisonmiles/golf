@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   header: {
-    top: 70,
+    top: 40,
     fontSize: 30,
   },
 });
