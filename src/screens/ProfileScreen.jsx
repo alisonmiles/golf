@@ -120,9 +120,6 @@ export default function ProfileScreen() {
                     >
                       {item.score}
                     </Text>
-                  </View>
-                  <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
-                    Over/Under Par:{' '}
                     <Text
                       style={{
                         flex: 1,
@@ -133,7 +130,7 @@ export default function ProfileScreen() {
                     >
                       {item.overUnderPar}
                     </Text>
-                  </Text>
+                  </View>
                   <View style={styles.figures}>
                     <Text
                       style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}
