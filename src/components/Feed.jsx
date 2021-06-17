@@ -10,26 +10,33 @@ function Feed() {
   const [posts, setPosts] = useState([]);
   const [hasPosts, setHasPosts] = useState(false);
 
-  console.log(posts.avatar);
-  //avatar: "../../assets/golfer(2).png"
-
-  let postAvatar;
-
-  if (posts.avatar === '../../assets/golfer.png') {
-    postAvatar = require('../../assets/golfer.png');
-  } else if (posts.avatar === '../../assets/golfer(1).png') {
-    postAvatar = require('../../assets/golfer(1).png');
-  } else if (posts.avatar === '../../assets/golfer(2).png') {
-    postAvatar = require('../../assets/golfer(2).png');
-  } else {
-    postAvatar = require('../../assets/golfer(3).png');
-  }
+  const avatar = {
+    img1: {
+      uri: require('../../assets/golfer.png'),
+    },
+    img2: {
+      uri: require('../../assets/golfer(1).png'),
+    },
+    img3: {
+      uri: require('../../assets/golfer(2).png'),
+    },
+    img4: {
+      uri: require('../../assets/golfer(3).png'),
+    },
+  };
 
   useEffect(() => {
     const postsArray = [];
     db.collection('posts').onSnapshot((postsGotten) => {
       postsGotten.forEach((post) => {
-        const gottenPost = post.data();
+        let gottenPost = post.data();
+        if (gottenPost.avatar === '../../assets/golfer.png') {
+          gottenPost.imgSrc = avatar.img1.uri;
+        } else if (gottenPost.avatar === '../../assets/golfer(1).png') {
+          gottenPost.imgSrc = avatar.img2.uri;
+        } else if (gottenPost.avatar === '../../assets/golfer(2).png') {
+          gottenPost.imgSrc = avatar.img3.uri;
+        } else gottenPost.imgSrc = avatar.img4.uri;
         postsArray.push(gottenPost);
       });
       setPosts(postsArray);
@@ -59,14 +66,18 @@ function Feed() {
         numColumns={1}
         renderItem={({ item, index }) => (
           <View style={styles.FeedItem}>
-            <Text style={{ fontSize: 22, fontWeight: '700' }}>
-              {item.username}
-            </Text>
-                <Image source={postAvatar} style={styles.avatar} />
+            <View style={styles.Row}>
+              <Text style={{ fontSize: 22, fontWeight: '700' }}>
+                {item.firstname}
+              </Text>
+              <Image source={item.imgSrc} style={styles.avatar} />
+            </View>
             <Text style={{ fontSize: 17, opacity: 0.6 }}>
               {item.coursename}
             </Text>
-                <Text>Date: {new Date(item.key.seconds * 1000).toString()}</Text>
+            <Text>
+              Date: {new Date(item.key.seconds * 1000).toDateString()}
+            </Text>
             <View style={{ marginTop: 15 }}>
               <View style={styles.figures}>
                 <Text
@@ -112,6 +123,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  Row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   FeedItem: {
     backgroundColor: '#FFF',
     padding: 20,
@@ -126,17 +141,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 10,
   },
-  avatar: {
-    width: 30,
-    height: 30,
-  },
   figures: {
     flexDirection: 'row',
     textAlign: 'center',
   },
   avatar: {
-    width: 75,
-    height: 75,
+    width: 50,
+    height: 50,
     resizeMode: 'contain',
     margin: 6,
   },
