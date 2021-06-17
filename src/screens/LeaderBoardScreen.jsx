@@ -89,22 +89,22 @@ function LeaderBoardScreen() {
                 <Text style={{ fontSize: 22, fontWeight: '700' }}>
                   {`Position ${item.position}`}
                 </Text>
+                <Text style={{ fontSize: 17, opacity: 0.6 }}>
+                  {item.firstname}
+                </Text>
+
                 <Text style={{ fontSize: 22, fontWeight: '700' }}>
                   <Text
                     style={{
                       flex: 1,
                       textAlign: 'center',
-                      fontSize: 30,
+                      fontSize: 20,
                       color: 'green',
                     }}
                   >
-                    {item.handicap}
+                    {item.handicap} Handicap
                   </Text>
                 </Text>
-                <Text style={{ fontSize: 17, opacity: 0.6 }}>
-                  {item.firstname}
-                </Text>
-
                 <Image style={styles.avatar} source={item.imgSrc} />
               </View>
             )}
