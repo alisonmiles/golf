@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import {
   View,
   Text,
+  Image,
   StyleSheet,
   TouchableOpacity,
   ImageBackground,
@@ -19,31 +20,46 @@ export default function LoginScreen({ navigation }) {
       source={require('../../assets/golf-background.jpeg')}
       style={styles.container}
     >
+      <View style={styles.logoPosition}>
+        <Image
+          style={styles.logo}
+          source={require('../../assets/Partee-Logo.png')}
+        ></Image>
+      </View>
       <View style={styles.container}>
-        <Text style={styles.text}>Welcome to Firebase app</Text>
         <FormInput
+          style={styles.textInput}
           value={email}
-          placeholderText="Email"
+          placeholderText='Email'
+          placeholderTextColor='#FFF'
           onChangeText={(userEmail) => setEmail(userEmail)}
-          autoCapitalize="none"
-          keyboardType="email-address"
+          autoCapitalize='none'
+          keyboardType='email-address'
           autoCorrect={false}
         />
         <FormInput
+          style={styles.textInput}
           value={password}
-          placeholderText="Password"
+          placeholderText='Password'
+          placeholderTextColor='#FFF'
           onChangeText={(userPassword) => setPassword(userPassword)}
           secureTextEntry={true}
         />
-        <FormButton
-          buttonTitle="Login"
-          onPress={() => login(email, password)}
-        />
         <TouchableOpacity
-          style={styles.navButton}
+          style={styles.button}
+          buttonTitle='Login'
+          onPress={() => login(email, password)}
+        >
+          {' '}
+          <Text style={styles.navButtonText}>Login</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          //buttonTitle='Sign Up'
+          //style={styles.navButton}
           onPress={() => navigation.navigate('Signup')}
         >
-          <Text style={styles.navButtonText}>New user? Join here</Text>
+          <Text style={styles.navButtonText}>Sign Up</Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>
@@ -52,19 +68,50 @@ export default function LoginScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
     justifyContent: 'center',
     alignItems: 'center',
   },
+  textInput: {
+    flex: 0.2,
+    alignItems: 'center',
+    width: 400,
+    margin: 20,
+    borderWidth: 2,
+    borderColor: 'white',
+    color: 'white',
+    fontSize: 20,
+    borderRadius: 10,
+  },
   text: {
     fontSize: 24,
-    marginBottom: 10,
+    textAlign: 'center',
   },
   navButton: {
     marginTop: 15,
   },
   navButtonText: {
-    fontSize: 20,
-    color: '#6646ee',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: 25,
+    color: 'white',
+  },
+  logo: {
+    width: 300,
+    height: 300,
+    resizeMode: 'contain',
+    margin: 6,
+  },
+  logoPosition: {
+    flex: 1,
+  },
+  button: {
+    flex: 0.1,
+    alignItems: 'center',
+    backgroundColor: '#7fcb27',
+    width: 200,
+    marginTop: 20,
+    padding: 15,
+    borderRadius: 50,
   },
 });
