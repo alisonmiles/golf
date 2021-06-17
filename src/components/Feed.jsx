@@ -10,6 +10,21 @@ function Feed() {
   const [posts, setPosts] = useState([]);
   const [hasPosts, setHasPosts] = useState(false);
 
+  console.log(posts.avatar);
+  //avatar: "../../assets/golfer(2).png"
+
+  let postAvatar;
+
+  if (posts.avatar === '../../assets/golfer.png') {
+    postAvatar = require('../../assets/golfer.png');
+  } else if (posts.avatar === '../../assets/golfer(1).png') {
+    postAvatar = require('../../assets/golfer(1).png');
+  } else if (posts.avatar === '../../assets/golfer(2).png') {
+    postAvatar = require('../../assets/golfer(2).png');
+  } else {
+    postAvatar = require('../../assets/golfer(3).png');
+  }
+
   useEffect(() => {
     const postsArray = [];
     db.collection('posts').onSnapshot((postsGotten) => {
@@ -47,9 +62,11 @@ function Feed() {
             <Text style={{ fontSize: 22, fontWeight: '700' }}>
               {item.username}
             </Text>
+                <Image source={postAvatar} style={styles.avatar} />
             <Text style={{ fontSize: 17, opacity: 0.6 }}>
               {item.coursename}
             </Text>
+                <Text>Date: {new Date(item.key.seconds * 1000).toString()}</Text>
             <View style={{ marginTop: 15 }}>
               <View style={styles.figures}>
                 <Text
@@ -81,11 +98,6 @@ function Feed() {
                   Over/Under Par
                 </Text>
               </View>
-            </View>
-            {/* <Text>Date: {new Date(item.key.seconds * 1000).toString()}</Text> */}
-            {/* <Image source={require(`../../assets/${item.avatar}`)} /> */}
-            <View>
-              <Image style={styles.avatar} source={item.avatar} />
             </View>
           </View>
         )}
@@ -121,6 +133,12 @@ const styles = StyleSheet.create({
   figures: {
     flexDirection: 'row',
     textAlign: 'center',
+  },
+  avatar: {
+    width: 75,
+    height: 75,
+    resizeMode: 'contain',
+    margin: 6,
   },
 });
 

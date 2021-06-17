@@ -62,7 +62,7 @@ export default function ProfileScreen() {
       {/* <View style={styles.container}> */}
       <Text style={styles.text}>Hello {returnedUser.firstname}</Text>
       <Text style={styles.text}>Username: {returnedUser.username}</Text>
-      <Text style={styles.text}>Handicap: {returnedUser.handicap}</Text>
+      <Text style={styles.text}>Current Handicap: {returnedUser.handicap}</Text>
       <Image source={avatar} style={styles.avatar}></Image>
       {/* </View> */}
       <Text style={styles.RoundHeader}>Your Previous Rounds:</Text>
