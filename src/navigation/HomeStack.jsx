@@ -2,6 +2,7 @@ import React from 'react';
 import HomeScreen from '../screens/HomeScreen';
 import PostScreen from '../screens/PostScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import LeaderBoardScreen from '../screens/LeaderBoardScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { StyleSheet } from 'react-native';
@@ -28,6 +29,16 @@ export default function HomeStack() {
           tabBarLabel: 'Post a round',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="golf" color={color} size={30} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="LeaderBoard"
+        component={LeaderBoardScreen}
+        options={{
+          tabBarLabel: 'Leader Board',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="chart-bar" color={color} size={30} />
           ),
         }}
       />
