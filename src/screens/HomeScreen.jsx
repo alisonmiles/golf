@@ -16,7 +16,7 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>Welcome {returnedUser.firstname}</Text>
+      <Text style={styles.header}>Welcome {returnedUser.firstname}</Text>
       <Feed />
     </SafeAreaView>
   );
@@ -33,5 +33,8 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     color: '#333333',
+  },
+  header: {
+    fontSize: 30,
   },
 });

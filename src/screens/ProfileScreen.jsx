@@ -141,8 +141,10 @@ export default function ProfileScreen() {
         extraData={userPosts}
         showsVerticalScrollIndicator={false}
       />
+
       <View style={{ marginBottom: 60 }}>
         <FormButton buttonTitle="Logout" onPress={() => logout()} />
+
       </View>
     </SafeAreaView>
     // </View>
