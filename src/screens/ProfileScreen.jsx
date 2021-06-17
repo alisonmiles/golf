@@ -13,6 +13,7 @@ import { UserContext } from '../navigation/Routes';
 import firebaseSetup from '../firebase/config.js';
 import { useEffect, useState } from 'react/cjs/react.development';
 import Loading from '../components/Loading';
+import { windowWidth } from '../utils/Dimensions.js';
 
 const { db } = firebaseSetup;
 
@@ -64,27 +65,58 @@ export default function ProfileScreen() {
       <Text style={styles.text}>Handicap: {returnedUser.handicap}</Text>
       <Image source={avatar} style={styles.avatar}></Image>
       {/* </View> */}
-      <Text>Your Previous Rounds:</Text>
+      <Text style={styles.RoundHeader}>Your Previous Rounds:</Text>
       <FlatList
         ItemSeparatorComponent={() => {
           return (
             <View
               style={{
-                height: 20,
-                width: '100%',
+                height: 15,
+                width: windowWidth / 1.15,
                 backgroundColor: '#f5f5f1',
               }}
             />
           );
         }}
+        contentContainerStyle={{
+          padding: 10,
+        }}
         data={userPosts}
         numColumns={1}
         renderItem={({ item }) => (
-          <View>
-            <Text>Course Name: {item.coursename}</Text>
-            <Text>Gross Score: {item.score}</Text>
-            <Text>Over/Under Par: {item.overUnderPar} </Text>
-            <Text>Date: {new Date(item.key.seconds * 1000).toString()}</Text>
+          <View style={styles.RoundInfo}>
+            <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
+              Course Name: {item.coursename}
+            </Text>
+            <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
+              Gross Score:{' '}
+              <Text
+                style={{
+                  flex: 1,
+                  textAlign: 'center',
+                  fontSize: 30,
+                  color: 'green',
+                }}
+              >
+                {item.score}
+              </Text>
+            </Text>
+            <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
+              Over/Under Par:{' '}
+              <Text
+                style={{
+                  flex: 1,
+                  textAlign: 'center',
+                  fontSize: 30,
+                  color: 'green',
+                }}
+              >
+                {item.overUnderPar}{' '}
+              </Text>
+            </Text>
+            <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
+              Date: {new Date(item.key.seconds * 1000).toString()}
+            </Text>
           </View>
         )}
         keyExtractor={(item, index) => index.toString()}
@@ -127,5 +159,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#f5f5f1',
     top: 50,
+  },
+  RoundHeader: {
+    fontSize: 22,
+  },
+  RoundInfo: {
+    backgroundColor: '#FFF',
+    padding: 20,
+    borderRadius: 5,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 5,
+      height: 5,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 10,
   },
 });
