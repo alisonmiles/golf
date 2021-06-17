@@ -6,6 +6,7 @@ import {
   Image,
   FlatList,
   SafeAreaView,
+  ImageBackground,
 } from 'react-native';
 import FormButton from '../components/FormButton';
 import { AuthContext } from '../navigation/AuthProvider';
@@ -54,80 +55,87 @@ export default function ProfileScreen() {
   }
   return (
     <SafeAreaView style={styles.container}>
-      {/* <View style={styles.container}> */}
-      <Text style={styles.text}>Hello {returnedUser.firstname}</Text>
-      <Text style={styles.text}>Username: {returnedUser.username}</Text>
-      <Text style={styles.text}>Current Handicap: {returnedUser.handicap}</Text>
-      <Image source={avatar} style={styles.avatar}></Image>
-      {/* </View> */}
-      <Text style={styles.RoundHeader}>Your Previous Rounds:</Text>
-      <FlatList
-        ItemSeparatorComponent={() => {
-          return (
-            <View
-              style={{
-                height: 15,
-                width: windowWidth / 1.15,
-                backgroundColor: '#f5f5f1',
-              }}
-            />
-          );
-        }}
-        contentContainerStyle={{
-          padding: 10,
-        }}
-        data={userPosts}
-        numColumns={1}
-        renderItem={({ item }) => (
-          <View style={styles.RoundInfo}>
-            <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
-              Course Name: {item.coursename}
-            </Text>
-            <Text
-              style={{
-                flex: 1,
-                textAlign: 'center',
-                opacity: 0.7,
-                marginTop: 10,
-              }}
-            >
-              Date: {new Date(item.key.seconds * 1000).toDateString()}
-            </Text>
-            <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
-              Gross Score:{' '}
+      <ImageBackground
+        source={require('../../assets/allb.jpeg')}
+        style={styles.background}
+      >
+        {/* <View style={styles.container}> */}
+        <Text style={styles.text}>Hello {returnedUser.firstname}</Text>
+        <Text style={styles.text}>Username: {returnedUser.username}</Text>
+        <Text style={styles.text}>
+          Current Handicap: {returnedUser.handicap}
+        </Text>
+        <Image source={avatar} style={styles.avatar}></Image>
+        {/* </View> */}
+        <Text style={styles.RoundHeader}>Your Previous Rounds:</Text>
+        <FlatList
+          ItemSeparatorComponent={() => {
+            return (
+              <View
+                style={{
+                  height: 15,
+                  width: windowWidth / 1.15,
+                  backgroundColor: '#f5f5f1',
+                }}
+              />
+            );
+          }}
+          contentContainerStyle={{
+            padding: 10,
+          }}
+          data={userPosts}
+          numColumns={1}
+          renderItem={({ item }) => (
+            <View style={styles.RoundInfo}>
+              <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
+                Course Name: {item.coursename}
+              </Text>
               <Text
                 style={{
                   flex: 1,
                   textAlign: 'center',
-                  fontSize: 30,
-                  color: 'green',
+                  opacity: 0.7,
+                  marginTop: 10,
                 }}
               >
-                {item.score}
+                Date: {new Date(item.key.seconds * 1000).toDateString()}
               </Text>
-            </Text>
-            <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
-              Over/Under Par:{' '}
-              <Text
-                style={{
-                  flex: 1,
-                  textAlign: 'center',
-                  fontSize: 30,
-                  color: 'green',
-                }}
-              >
-                {item.overUnderPar}{' '}
+              <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
+                Gross Score:{' '}
+                <Text
+                  style={{
+                    flex: 1,
+                    textAlign: 'center',
+                    fontSize: 30,
+                    color: 'green',
+                  }}
+                >
+                  {item.score}
+                </Text>
               </Text>
-            </Text>
-          </View>
-        )}
-        keyExtractor={(item, index) => index.toString()}
-        extraData={userPosts}
-        showsVerticalScrollIndicator={false}
-      />
-                <View style={{marginBottom: 90}}>
-                  <FormButton buttonTitle='Logout' onPress={() => logout()} />
-                </View>
+              <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
+                Over/Under Par:{' '}
+                <Text
+                  style={{
+                    flex: 1,
+                    textAlign: 'center',
+                    fontSize: 30,
+                    color: 'green',
+                  }}
+                >
+                  {item.overUnderPar}{' '}
+                </Text>
+              </Text>
+            </View>
+          )}
+          keyExtractor={(item, index) => index.toString()}
+          extraData={userPosts}
+          showsVerticalScrollIndicator={false}
+        />
+        <View style={{ marginBottom: 90 }}>
+          <FormButton buttonTitle="Logout" onPress={() => logout()} />
+        </View>
+      </ImageBackground>
     </SafeAreaView>
     // </View>
   );
@@ -180,5 +188,9 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 1,
     shadowRadius: 10,
+  },
+  background: {
+    flex: 1,
+    alignItems: 'center',
   },
 });

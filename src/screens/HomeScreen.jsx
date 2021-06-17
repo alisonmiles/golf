@@ -1,5 +1,11 @@
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  ImageBackground,
+} from 'react-native';
 import Feed from '../components/Feed';
 import { UserContext } from '../navigation/Routes';
 import { AuthContext } from '../navigation/AuthProvider';
@@ -16,8 +22,13 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>Welcome {returnedUser.firstname}</Text>
-      <Feed />
+      <ImageBackground
+        source={require('../../assets/allb.jpeg')}
+        style={styles.background}
+      >
+        <Text style={styles.text}>Welcome {returnedUser.firstname}</Text>
+        <Feed />
+      </ImageBackground>
     </SafeAreaView>
   );
 }
@@ -25,13 +36,15 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f5f5f1',
+
     top: 50,
   },
   text: {
     fontSize: 20,
     color: '#333333',
+  },
+  background: {
+    flex: 1,
+    alignItems: 'center',
   },
 });

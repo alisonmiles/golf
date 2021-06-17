@@ -1,5 +1,12 @@
 import React from 'react';
-import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  Image,
+  StyleSheet,
+  ImageBackground,
+} from 'react-native';
 import { useState, useEffect } from 'react/cjs/react.development';
 import firebaseSetup from '../firebase/config.js';
 import { windowWidth } from '../utils/Dimensions.js';
@@ -52,48 +59,55 @@ function LeaderBoardScreen() {
   if (hasUsers === false) return <Text>Leader Board Loading...</Text>;
   else {
     return (
-      <FlatList
-        ItemSeparatorComponent={() => {
-          return (
-            <View
-              style={{
-                height: 15,
-                width: windowWidth / 1.15,
-                // backgroundColor: '#f5f5f1',
-              }}
-            />
-          );
-        }}
-        contentContainerStyle={{
-          padding: 10,
-        }}
-        data={users}
-        numColumns={1}
-        renderItem={({ item, index }) => (
-          <View style={styles.FeedItem}>
-            <Text style={{ fontSize: 22, fontWeight: '700' }}>
-              {`Position ${item.position}`}
-            </Text>
-            <Text style={{ fontSize: 22, fontWeight: '700' }}>
-              <Text
+      <ImageBackground
+        source={require('../../assets/allb.jpeg')}
+        style={styles.background}
+      >
+        <FlatList
+          ItemSeparatorComponent={() => {
+            return (
+              <View
                 style={{
-                  flex: 1,
-                  textAlign: 'center',
-                  fontSize: 30,
-                  color: 'green',
+                  height: 15,
+                  width: windowWidth / 1.15,
+                  // backgroundColor: '#f5f5f1',
                 }}
-              >
-                {item.handicap}
+              />
+            );
+          }}
+          contentContainerStyle={{
+            padding: 10,
+          }}
+          data={users}
+          numColumns={1}
+          renderItem={({ item, index }) => (
+            <View style={styles.FeedItem}>
+              <Text style={{ fontSize: 22, fontWeight: '700' }}>
+                {`Position ${item.position}`}
               </Text>
-            </Text>
-            <Text style={{ fontSize: 17, opacity: 0.6 }}>{item.firstname}</Text>
-            <Image style={styles.avatar} source={item.imgSrc} />
-          </View>
-        )}
-        keyExtractor={(item, index) => 'key' + index}
-        extraData={users}
-        showsVerticalScrollIndicator={false}
-      />
+              <Text style={{ fontSize: 22, fontWeight: '700' }}>
+                <Text
+                  style={{
+                    flex: 1,
+                    textAlign: 'center',
+                    fontSize: 30,
+                    color: 'green',
+                  }}
+                >
+                  {item.handicap}
+                </Text>
+              </Text>
+              <Text style={{ fontSize: 17, opacity: 0.6 }}>
+                {item.firstname}
+              </Text>
+              <Image style={styles.avatar} source={item.imgSrc} />
+            </View>
+          )}
+          keyExtractor={(item, index) => 'key' + index}
+          extraData={users}
+          showsVerticalScrollIndicator={false}
+        />
+      </ImageBackground>
     );
   }
 }
@@ -122,6 +136,10 @@ const styles = StyleSheet.create({
   figures: {
     flexDirection: 'row',
     textAlign: 'center',
+  },
+  background: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
 
