@@ -1,5 +1,12 @@
 import React from 'react';
-import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  Image,
+  StyleSheet,
+  ImageBackground,
+} from 'react-native';
 import { useState, useEffect } from 'react/cjs/react.development';
 import firebaseSetup from '../firebase/config.js';
 import { windowWidth } from '../utils/Dimensions.js';
@@ -52,6 +59,12 @@ function LeaderBoardScreen() {
   if (hasUsers === false) return <Text>Leader Board Loading...</Text>;
   else {
     return (
+
+      <ImageBackground
+        source={require('../../assets/allb.jpeg')}
+        style={styles.background}
+      >
+
       <View styles={styles.container}>
         <Text style={styles.header}></Text>
         <Text style={styles.header}>Leader Board</Text>
@@ -77,6 +90,7 @@ function LeaderBoardScreen() {
             <View style={styles.FeedItem}>
               <Text style={{ fontSize: 22, fontWeight: '700' }}>
                 {`Position ${item.position}`}
+
               </Text>
               <Text style={{ fontSize: 22, fontWeight: '700' }}>
                 <Text
@@ -93,6 +107,7 @@ function LeaderBoardScreen() {
               <Text style={{ fontSize: 17, opacity: 0.6 }}>
                 {item.firstname}
               </Text>
+
               <Image style={styles.avatar} source={item.imgSrc} />
             </View>
           )}
@@ -100,7 +115,11 @@ function LeaderBoardScreen() {
           extraData={users}
           showsVerticalScrollIndicator={false}
         />
+
+      </ImageBackground>
+
       </View>
+
     );
   }
 }
@@ -133,10 +152,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     textAlign: 'center',
   },
+
+  background: {
+    flex: 1,
+    alignItems: 'center',
+
   header: {
     // top: 70,
     fontSize: 30,
     textAlign: 'center',
+
   },
 });
 

@@ -6,6 +6,7 @@ import {
   Image,
   FlatList,
   SafeAreaView,
+  ImageBackground,
 } from 'react-native';
 import FormButton from '../components/FormButton';
 import { AuthContext } from '../navigation/AuthProvider';
@@ -54,6 +55,10 @@ export default function ProfileScreen() {
   }
   return (
     <SafeAreaView style={styles.container}>
+        <ImageBackground
+        source={require('../../assets/allb.jpeg')}
+        style={styles.background}
+      >
       <View style={{ alignItems: 'center' }}>
         <View style={styles.profileInfo}>
           <Image source={avatar} style={styles.avatar}></Image>
@@ -105,6 +110,7 @@ export default function ProfileScreen() {
             </Text>
             <View style={{ marginTop: 15 }}>
               <View style={styles.figures}>
+                
                 <Text
                   style={{
                     flex: 1,
@@ -115,6 +121,11 @@ export default function ProfileScreen() {
                 >
                   {item.score}
                 </Text>
+
+              </Text>
+              <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
+                Over/Under Par:{' '}
+
                 <Text
                   style={{
                     flex: 1,
@@ -123,6 +134,7 @@ export default function ProfileScreen() {
                     color: 'green',
                   }}
                 >
+
                   {item.overUnderPar}
                 </Text>
               </View>
@@ -146,6 +158,7 @@ export default function ProfileScreen() {
         <FormButton buttonTitle="Logout" onPress={() => logout()} />
 
       </View>
+      </ImageBackground>
     </SafeAreaView>
     // </View>
   );
@@ -199,11 +212,17 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 10,
   },
+
+  background: {
+    flex: 1,
+    alignItems: 'center',
+
   figures: {
     flexDirection: 'row',
     textAlign: 'center',
   },
   profileInfo: {
     flexDirection: 'row',
+
   },
 });
