@@ -11,6 +11,21 @@ function LeaderBoardScreen() {
   const [users, setUsers] = useState([]);
   const [hasUsers, setHasUsers] = useState(false);
 
+  const avatar = {
+    img1: {
+      uri: require('../../assets/golfer.png'),
+    },
+    img2: {
+      uri: require('../../assets/golfer(1).png'),
+    },
+    img3: {
+      uri: require('../../assets/golfer(2).png'),
+    },
+    img4: {
+      uri: require('../../assets/golfer(3).png'),
+    },
+  };
+
   useEffect(() => {
     const usersArray = [];
     db.collection('users')
@@ -18,6 +33,14 @@ function LeaderBoardScreen() {
       .onSnapshot((usersGotten) => {
         usersGotten.forEach((user) => {
           const gottenUser = user.data();
+          console.log(gottenUser);
+          if (gottenUser.avatar === '../../assets/golfer.png') {
+            gottenUser.imgSrc = avatar.img1.uri;
+          } else if (gottenUser.avatar === '../../assets/golfer(1).png') {
+            gottenUser.imgSrc = avatar.img2.uri;
+          } else if (gottenUser.avatar === '../../assets/golfer(2).png') {
+            gottenUser.imgSrc = avatar.img3.uri;
+          } else gottenUser.imgSrc = avatar.img4.uri;
           usersArray.push(gottenUser);
         });
         leaderBoardSorter(usersArray);
@@ -64,7 +87,7 @@ function LeaderBoardScreen() {
               </Text>
             </Text>
             <Text style={{ fontSize: 17, opacity: 0.6 }}>{item.firstname}</Text>
-            {/* <Image style={styles.avatar} source={item.avatar} /> */}
+            <Image style={styles.avatar} source={item.imgSrc} />
           </View>
         )}
         keyExtractor={(item, index) => 'key' + index}
