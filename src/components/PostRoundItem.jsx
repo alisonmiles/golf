@@ -55,6 +55,32 @@ export default function PostRoundItem({
       });
   };
 
+  const handicapUpdate = () => {
+    db.collection('users')
+      .doc(user.uid)
+      .update({
+        handicap: returnedUser.handicap + handicapCalculation(),
+      })
+      .then(() => {
+        console.log('Handicap updated');
+      });
+  };
+
+  const handicapCalculation = () => {
+    let netScore = score - Math.floor(returnedUser.handicap);
+    if (netScore < parScore) {
+      const handicapboost = (parScore - netScore) / 10;
+      console.log(handicapboost);
+      console.log('parscor is', parScore);
+      console.log('netscore is', netScore);
+      // Alert(`Handicap BOOST, -${handicapboost}`);
+      return -handicapboost;
+    } else if (netScore > parScore) {
+      console.log('0.1');
+      return 0.1;
+    }
+  };
+
   return (
     <View style={[styles.container, { width }]}>
       <View
@@ -204,6 +230,7 @@ export default function PostRoundItem({
             title="Post My Round"
             onPress={() => {
               // setOverUnder(score - parScore);
+              handicapUpdate();
               sendToDb();
               navigation.navigate('Home', {});
             }}
@@ -229,6 +256,6 @@ const styles = StyleSheet.create({
     width: 140,
     margin: 20,
     borderWidth: 1,
-    fontSize: 30,
+    fontSize: 25,
   },
 });
