@@ -23,7 +23,7 @@ export default function LoginScreen({ navigation }) {
       <View style={styles.logoPosition}>
         <Image
           style={styles.logo}
-          source={require('../../assets/Partee-Logo.png')}
+          source={require('../../assets/ParTee-Logo.png')}
         ></Image>
       </View>
       <View style={styles.container}>
