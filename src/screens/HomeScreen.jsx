@@ -22,7 +22,6 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-
       <ImageBackground
         source={require('../../assets/allb.jpeg')}
         style={styles.background}
@@ -30,7 +29,6 @@ export default function HomeScreen() {
         <Text style={styles.text}>Welcome {returnedUser.firstname}</Text>
         <Feed />
       </ImageBackground>
-
     </SafeAreaView>
   );
 }
@@ -45,13 +43,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#333333',
   },
-
   background: {
     flex: 1,
     alignItems: 'center',
-
+  },
   header: {
     fontSize: 30,
-
   },
 });

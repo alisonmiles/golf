@@ -55,109 +55,104 @@ export default function ProfileScreen() {
   }
   return (
     <SafeAreaView style={styles.container}>
-        <ImageBackground
+      <ImageBackground
         source={require('../../assets/allb.jpeg')}
         style={styles.background}
       >
-      <View style={{ alignItems: 'center' }}>
-        <View style={styles.profileInfo}>
-          <Image source={avatar} style={styles.avatar}></Image>
-          <View style={{ alignItems: 'center', top: 20 }}>
-            <Text style={{ fontSize: 30, color: 'green' }}>
-              {returnedUser.handicap}
-            </Text>
-            <Text style={styles.text}>Handicap</Text>
-          </View>
-        </View>
-
-        <Text style={styles.text}>Hello {returnedUser.firstname}</Text>
-        <Text style={styles.text}>Username: {returnedUser.username}</Text>
-
-        <Text style={styles.RoundHeader}>Your Previous Rounds</Text>
-      </View>
-
-      <FlatList
-        ItemSeparatorComponent={() => {
-          return (
-            <View
-              style={{
-                height: 15,
-                width: windowWidth / 1.15,
-                backgroundColor: '#f5f5f1',
-              }}
-            />
-          );
-        }}
-        contentContainerStyle={{
-          padding: 10,
-        }}
-        data={userPosts}
-        numColumns={1}
-        renderItem={({ item }) => (
-          <View style={styles.RoundInfo}>
-            <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
-              {item.coursename}
-            </Text>
-            <Text
-              style={{
-                flex: 1,
-                textAlign: 'center',
-                opacity: 0.7,
-                marginTop: 10,
-              }}
-            >
-              {new Date(item.key.seconds * 1000).toDateString()}
-            </Text>
-            <View style={{ marginTop: 15 }}>
-              <View style={styles.figures}>
-                
-                <Text
-                  style={{
-                    flex: 1,
-                    textAlign: 'center',
-                    fontSize: 30,
-                    color: 'green',
-                  }}
-                >
-                  {item.score}
-                </Text>
-
+        <View style={{ alignItems: 'center' }}>
+          <View style={styles.profileInfo}>
+            <Image source={avatar} style={styles.avatar}></Image>
+            <View style={{ alignItems: 'center', top: 20 }}>
+              <Text style={{ fontSize: 30, color: 'green' }}>
+                {returnedUser.handicap}
               </Text>
-              <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
-                Over/Under Par:{' '}
-
-                <Text
-                  style={{
-                    flex: 1,
-                    textAlign: 'center',
-                    fontSize: 30,
-                    color: 'green',
-                  }}
-                >
-
-                  {item.overUnderPar}
-                </Text>
-              </View>
-              <View style={styles.figures}>
-                <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
-                  Gross Score
-                </Text>
-                <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
-                  Over/Under Par
-                </Text>
-              </View>
+              <Text style={styles.text}>Handicap</Text>
             </View>
           </View>
-        )}
-        keyExtractor={(item, index) => index.toString()}
-        extraData={userPosts}
-        showsVerticalScrollIndicator={false}
-      />
 
-      <View style={{ marginBottom: 60 }}>
-        <FormButton buttonTitle="Logout" onPress={() => logout()} />
+          <Text style={styles.text}>Hello {returnedUser.firstname}</Text>
+          <Text style={styles.text}>Username: {returnedUser.username}</Text>
 
-      </View>
+          <Text style={styles.RoundHeader}>Your Previous Rounds</Text>
+        </View>
+
+        <FlatList
+          ItemSeparatorComponent={() => {
+            return (
+              <View
+                style={{
+                  height: 15,
+                  width: windowWidth / 1.15,
+                  backgroundColor: '#f5f5f1',
+                }}
+              />
+            );
+          }}
+          contentContainerStyle={{
+            padding: 10,
+          }}
+          data={userPosts}
+          numColumns={1}
+          renderItem={({ item }) => (
+            <View style={styles.RoundInfo}>
+              <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
+                {item.coursename}
+              </Text>
+              <Text
+                style={{
+                  flex: 1,
+                  textAlign: 'center',
+                  opacity: 0.7,
+                  marginTop: 10,
+                }}
+              >
+                {new Date(item.key.seconds * 1000).toDateString()}
+              </Text>
+              <View style={{ marginTop: 15 }}>
+                <View style={styles.figures}>
+                  <Text
+                    style={{
+                      flex: 1,
+                      textAlign: 'center',
+                      fontSize: 30,
+                      color: 'green',
+                    }}
+                  >
+                    {item.score}
+                  </Text>
+                </View>
+                <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
+                  Over/Under Par:{' '}
+                  <Text
+                    style={{
+                      flex: 1,
+                      textAlign: 'center',
+                      fontSize: 30,
+                      color: 'green',
+                    }}
+                  >
+                    {item.overUnderPar}
+                  </Text>
+                </Text>
+                <View style={styles.figures}>
+                  <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
+                    Gross Score
+                  </Text>
+                  <Text style={{ flex: 1, textAlign: 'center', opacity: 0.7 }}>
+                    Over/Under Par
+                  </Text>
+                </View>
+              </View>
+            </View>
+          )}
+          keyExtractor={(item, index) => index.toString()}
+          extraData={userPosts}
+          showsVerticalScrollIndicator={false}
+        />
+
+        <View style={{ marginBottom: 60 }}>
+          <FormButton buttonTitle="Logout" onPress={() => logout()} />
+        </View>
       </ImageBackground>
     </SafeAreaView>
     // </View>
@@ -216,13 +211,12 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     alignItems: 'center',
-
+  },
   figures: {
     flexDirection: 'row',
     textAlign: 'center',
   },
   profileInfo: {
     flexDirection: 'row',
-
   },
 });
