@@ -16,7 +16,7 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>Welcome {returnedUser.username}</Text>
+      <Text style={styles.text}>Welcome {returnedUser.firstname}</Text>
       <Feed />
     </SafeAreaView>
   );
