@@ -52,54 +52,64 @@ function LeaderBoardScreen() {
   if (hasUsers === false) return <Text>Leader Board Loading...</Text>;
   else {
     return (
-      <FlatList
-        ItemSeparatorComponent={() => {
-          return (
-            <View
-              style={{
-                height: 15,
-                width: windowWidth / 1.15,
-                // backgroundColor: '#f5f5f1',
-              }}
-            />
-          );
-        }}
-        contentContainerStyle={{
-          padding: 10,
-        }}
-        data={users}
-        numColumns={1}
-        renderItem={({ item, index }) => (
-          <View style={styles.FeedItem}>
-            <Text style={{ fontSize: 22, fontWeight: '700' }}>
-              {`Position ${item.position}`}
-            </Text>
-            <Text style={{ fontSize: 22, fontWeight: '700' }}>
-              <Text
+      <View styles={styles.container}>
+        <Text style={styles.header}></Text>
+        <Text style={styles.header}>Leader Board</Text>
+
+        <FlatList
+          ItemSeparatorComponent={() => {
+            return (
+              <View
                 style={{
-                  flex: 1,
-                  textAlign: 'center',
-                  fontSize: 30,
-                  color: 'green',
+                  height: 15,
+                  width: windowWidth / 1.15,
+                  // backgroundColor: '#f5f5f1',
                 }}
-              >
-                {item.handicap}
+              />
+            );
+          }}
+          contentContainerStyle={{
+            padding: 10,
+          }}
+          data={users}
+          numColumns={1}
+          renderItem={({ item, index }) => (
+            <View style={styles.FeedItem}>
+              <Text style={{ fontSize: 22, fontWeight: '700' }}>
+                {`Position ${item.position}`}
               </Text>
-            </Text>
-            <Text style={{ fontSize: 17, opacity: 0.6 }}>{item.firstname}</Text>
-            <Image style={styles.avatar} source={item.imgSrc} />
-          </View>
-        )}
-        keyExtractor={(item, index) => 'key' + index}
-        extraData={users}
-        showsVerticalScrollIndicator={false}
-      />
+              <Text style={{ fontSize: 22, fontWeight: '700' }}>
+                <Text
+                  style={{
+                    flex: 1,
+                    textAlign: 'center',
+                    fontSize: 30,
+                    color: 'green',
+                  }}
+                >
+                  {item.handicap}
+                </Text>
+              </Text>
+              <Text style={{ fontSize: 17, opacity: 0.6 }}>
+                {item.firstname}
+              </Text>
+              <Image style={styles.avatar} source={item.imgSrc} />
+            </View>
+          )}
+          keyExtractor={(item, index) => 'key' + index}
+          extraData={users}
+          showsVerticalScrollIndicator={false}
+        />
+      </View>
     );
   }
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    top: 10,
   },
   FeedItem: {
     backgroundColor: '#FFF',
@@ -121,6 +131,11 @@ const styles = StyleSheet.create({
   },
   figures: {
     flexDirection: 'row',
+    textAlign: 'center',
+  },
+  header: {
+    // top: 70,
+    fontSize: 30,
     textAlign: 'center',
   },
 });
